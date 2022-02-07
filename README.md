@@ -1,3 +1,3 @@
 # tristanguest.dev
 
-Personal web site and landing page, build with Next.js.
+Personal web site and landing page, built with Next.js.
