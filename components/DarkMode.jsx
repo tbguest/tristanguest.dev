@@ -1,4 +1,6 @@
 import styles from "./DarkMode.module.css";
+import { WiDaySunny } from "react-icons/wi";
+import { WiMoonWaningCrescent3 } from "react-icons/wi";
 
 // 1
 const setDark = () => {
@@ -40,7 +42,7 @@ const toggleTheme = (e) => {
 const DarkMode = () => {
   return (
     <div className={styles.toggle_theme_wrapper}>
-      <span>☀️</span>
+      <WiDaySunny className={styles.icon} />
       <label className={styles.toggle_theme} htmlFor="checkbox">
         <input
           type="checkbox"
@@ -51,7 +53,7 @@ const DarkMode = () => {
         />
         <div className={styles.slider_round}></div>
       </label>
-      <span>🌒</span>
+      <WiMoonWaningCrescent3 className={styles.icon} />
     </div>
   );
 };

@@ -6,6 +6,10 @@
   gap: 4px;
 }
 
+.icon {
+  font-size: 28px;
+}
+
 .toggle_theme_wrapper span {
   font-size: 28px;
 }
