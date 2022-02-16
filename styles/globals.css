@@ -14,6 +14,8 @@ body {
   margin: 0;
   font-family: Inter var, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-color);
+  color: var(--font-color);
 }
 
 a {
@@ -29,4 +31,11 @@ a {
   --content-max-width: 42rem;
   --title-font-size: 2.3rem;
   --body-font-size: 1rem;
+  --font-color: #000000;
+  --background-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --font-color: #ffffff;
+  --background-color: #000000;
 }

@@ -25,11 +25,6 @@ export default function Header() {
         currents, and tides, and I enjoy building web-friendly pipelines for
         data. I also like building front-end experiences using React.
       </p>
-      {/* <p className={styles.description}>
-        I spend much of my professional time using Python and cloud services to
-        build serverless .. . I also like building front-end experiences using
-        React.
-      </p> */}
     </header>
   );
 }
