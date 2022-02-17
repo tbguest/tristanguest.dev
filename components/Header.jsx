@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./Header.module.css";
-import profile from "../public/profile.png"; // Tell webpack this JS file uses this image
+import profile from "../public/profile.png";
 
 export default function Header() {
   return (
@@ -21,9 +21,9 @@ export default function Header() {
         </a>
       </nav> */}
       <p className={styles.description}>
-        Hi, I&apos;m an oceanographer and web developer. I think about waves,
+        I&apos;m an oceanographer and software developer. I think about waves,
         currents, and tides, and I enjoy building web-friendly pipelines for
-        data. I also like building front-end experiences using React.
+        data. I also like building front-end web experiences using React.
       </p>
     </header>
   );
