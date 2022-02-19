@@ -1,37 +1,38 @@
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
-import { WiDaySunny } from "react-icons/wi";
-import { WiMoonWaningCrescent3 } from "react-icons/wi";
+import React, { useState, useEffect, useRef } from "react";
+import { IoIosSunny } from "react-icons/io";
+import { WiMoonAltWaningCrescent4 } from "react-icons/wi";
+
 import styles from "./DarkMode.module.css";
 
 const DarkMode = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  const isInitial = useRef(true);
+
+  const toggleTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+    isInitial.current = false;
+  };
+
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
-
   return (
     <div className={styles.theme_toggle_wrapper}>
-      <div></div>
-      {theme === "light" ? (
-        <button onClick={toggleTheme} className={styles.button}>
-          <WiMoonWaningCrescent3 className={styles.icon} />
-        </button>
-      ) : (
-        <button onClick={toggleTheme} className={styles.button}>
-          <WiDaySunny className={styles.icon} />
-        </button>
-      )}
+      <button onClick={toggleTheme} className={styles.button}>
+        {theme === "light" ? (
+          <WiMoonAltWaningCrescent4
+            className={isInitial.current ? styles.icon_initial : styles.icon}
+          />
+        ) : (
+          <IoIosSunny
+            className={isInitial.current ? styles.icon_initial : styles.icon}
+          />
+        )}
+      </button>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Social from "../components/Social";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import DarkMode from "../components/DarkMode";
+
 import styles from "../styles/Home.module.css";
 
 export default function Home() {

@@ -25,6 +25,7 @@ a {
 
 a:hover {
   color: var(--link-color);
+  background: rgba(144, 144, 144, 0.1);
 }
 
 * {
@@ -37,11 +38,9 @@ a:hover {
   --body-font-size: 1rem;
   --font-color: #000000;
   --background-color: #ffffff;
-  --link-color: rgb(7, 79, 212);
 }
 
 [data-theme="dark"] {
   --font-color: #ffffff;
   --background-color: #181818;
-  --link-color: rgb(100, 149, 255);
 }
