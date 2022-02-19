@@ -1,0 +1,67 @@
+.theme_toggle_wrapper {
+  display: flex;
+  justify-content: right;
+}
+
+.button {
+  height: 48px;
+  width: 48px;
+  position: relative;
+  padding: 0px;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background: rgba(144, 144, 144, 0.1);
+}
+
+.icon_initial {
+  position: absolute;
+  height: 70%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  position: absolute;
+  height: 70%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-fill-mode: forwards;
+  animation-duration: 400ms;
+  animation-name: slidein;
+}
+
+.icon:active {
+  animation-name: slideout;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideout {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
