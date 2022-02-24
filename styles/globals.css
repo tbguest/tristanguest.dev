@@ -38,6 +38,7 @@ a:hover {
   --body-font-size: 1rem;
   --font-color: #000000;
   --background-color: #ffffff;
+  --gutter: 2rem;
 }
 
 [data-theme="dark"] {

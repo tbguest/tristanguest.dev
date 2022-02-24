@@ -1,13 +1,17 @@
 .container {
+  margin-top: var(--gutter);
+  margin-bottom: var(--gutter);
+  padding: 0;
 }
 
 .blog_item {
   list-style-type: none;
   display: flex;
   /* height: 4rem; */
-  /* width: 20rem; */
+  width: 100%;
   border: 2px solid;
-  margin: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .blog_link {
