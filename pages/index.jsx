@@ -3,7 +3,7 @@ import { Header, Social } from "../components";
 
 import styles from "../styles/Home.module.css";
 
-export default function Home({ posts }) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +15,14 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <p className={styles.description}>
+        I&apos;m an oceanographer and software developer. I think about waves,
+        currents, and tides, and I enjoy building web-friendly pipelines for
+        data. I also like building front-end web experiences using React.
+      </p>
+      <p className={styles.description}>
+        Contact me if you see something here you&apos;d like to chat about!
+      </p>
       <Social />
     </div>
   );

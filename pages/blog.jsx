@@ -12,6 +12,11 @@ export default function Blog({ posts }) {
         <meta></meta>
       </Head>
       {/* <Header /> */}
+      <h1>Development Blog</h1>
+      <p>
+        Here are some recent posts outlining my adventures in web development,
+        design, and data science.{" "}
+      </p>
       <BlogList posts={posts} />
     </>
   );

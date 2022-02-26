@@ -28,6 +28,11 @@ a:hover {
   background: rgba(144, 144, 144, 0.1);
 }
 
+h1 {
+  font-size: var(--title-font-size);
+  font-weight: 900;
+}
+
 * {
   box-sizing: border-box;
 }
