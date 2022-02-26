@@ -33,12 +33,13 @@ a:hover {
 }
 
 :root {
-  --content-max-width: 42rem;
+  --content-max-width: 50rem;
   --title-font-size: 2.3rem;
   --body-font-size: 1rem;
   --font-color: #000000;
   --background-color: #ffffff;
   --gutter: 2rem;
+  --border-radius: 4px;
 }
 
 [data-theme="dark"] {

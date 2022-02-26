@@ -11,7 +11,7 @@ export default function Blog({ posts }) {
         <title>Tristan Guest - Blog</title>
         <meta></meta>
       </Head>
-      <Header />
+      {/* <Header /> */}
       <BlogList posts={posts} />
     </>
   );
