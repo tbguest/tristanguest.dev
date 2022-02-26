@@ -1,11 +1,3 @@
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  font-size: var(--body-font-size);
-}
-
 .photo_container {
   /* padding-bottom: 1rem; */
   /* padding: 2rem 0 1rem 1rem; */
@@ -41,14 +33,6 @@
   margin-bottom: 1rem;
 }
 
-.title,
-.description {
+.title {
   text-align: left;
-}
-
-.description {
-  margin: 2rem 0;
-  line-height: 1.5;
-  font-size: var(--body-font-size);
-  font-weight: 400;
 }
