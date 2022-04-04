@@ -22,7 +22,13 @@ const DarkMode = () => {
 
   return (
     <div className={styles.theme_toggle_wrapper}>
-      <button onClick={toggleTheme} className={styles.button}>
+      <button
+        onClick={toggleTheme}
+        className={styles.button}
+        aria-label={
+          theme === "light" ? "Switch to dark mode" : "Switch to light mode"
+        }
+      >
         {theme === "light" ? (
           <WiMoonAltWaningCrescent4
             className={isInitial.current ? styles.icon_initial : styles.icon}
