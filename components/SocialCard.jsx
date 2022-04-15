@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./SocialCard.module.css";
 
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
 export default function SocialCard({ medium, url, icon }) {
   return (
     <div className={styles.card_container}>
