@@ -5,14 +5,14 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link
-          rel="preload"
+          rel="stylesheet preload prefetch"
           href="/fonts/Inter-roman.var.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
-          rel="preload"
+          rel="stylesheet preload prefetch"
           href="/fonts/Inter-italic.var.woff2"
           as="font"
           type="font/woff2"
