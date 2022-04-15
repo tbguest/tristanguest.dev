@@ -6,7 +6,12 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.photo_container}>
-        <Image src={profile} alt="Profile photo" width={220} height={220} />
+        <Image
+          src={profile}
+          alt="Profile photo"
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
       <h1 className={styles.title}>Tristan Guest</h1>
       {/* <nav className={styles.navbar}>

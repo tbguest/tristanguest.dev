@@ -7,8 +7,10 @@
 }
 
 .photo_container {
-  /* padding-bottom: 1rem; */
-  padding: 2rem 0 1rem 1rem;
+  margin: 1rem;
+  position: relative;
+  width: 220px;
+  height: 220px;
 }
 
 .header {
