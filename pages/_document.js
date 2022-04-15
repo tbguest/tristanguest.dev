@@ -6,23 +6,16 @@ export default function Document() {
       <Head>
         <link
           rel="preload"
-          href="/fonts/Inter-Regular.ttf"
+          href="/fonts/Inter-roman.var.woff2"
           as="font"
-          type="font/ttf"
+          type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/Inter-Bold.ttf"
+          href="/fonts/Inter-italic.var.woff2"
           as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Inter-Black.ttf"
-          as="font"
-          type="font/ttf"
+          type="font/woff2"
           crossOrigin="anonymous"
         />
       </Head>
