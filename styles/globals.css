@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Inter";
+  font-family: "Inter var";
   font-style: normal;
   font-weight: 100 900;
   font-display: optional;
@@ -10,7 +10,7 @@
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: "Inter var";
   font-style: italic;
   font-weight: 100 900;
   font-display: optional;
@@ -31,7 +31,7 @@ html {
 } */
 
 html {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter var", sans-serif;
 }
 
 html,
