@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import "../styles/fonts.css";
 import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }) {
