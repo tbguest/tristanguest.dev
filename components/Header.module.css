@@ -6,9 +6,15 @@
   font-size: var(--body-font-size);
 }
 
-.photo_container {
+.profile_image_container {
   /* padding-bottom: 1rem; */
   padding: 2rem 0 1rem 1rem;
+  border-radius: 50px;
+}
+
+.profile_image {
+  border-radius: 150px;
+  overflow: hidden;
 }
 
 .header {
