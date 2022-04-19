@@ -5,8 +5,16 @@ import profile from "../public/profile.png";
 export default function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.photo_container}>
-        <Image src={profile} alt="Profile photo" width={220} height={220} />
+      <div className={styles.profile_image_container}>
+        <Image
+          src={profile}
+          alt="Photo of the author"
+          width={220}
+          height={220}
+          priority={true}
+          placeholder="blur"
+          className={styles.profile_image}
+        />
       </div>
       <h1 className={styles.title}>Tristan Guest</h1>
       {/* <nav className={styles.navbar}>
