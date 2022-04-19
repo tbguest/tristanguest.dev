@@ -9,8 +9,8 @@ export default function Header() {
         <Image
           src={profile}
           alt="Photo of the author"
-          width={220}
-          height={220}
+          width={180}
+          height={180}
           priority={true}
           placeholder="blur"
           className={styles.profile_image}
