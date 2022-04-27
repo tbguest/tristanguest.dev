@@ -12,7 +12,7 @@ export default function Header() {
           width={180}
           height={180}
           priority={true}
-          placeholder="blur"
+          // placeholder="blur"
           className={styles.profile_image}
         />
       </div>
