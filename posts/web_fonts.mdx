@@ -1,0 +1,109 @@
+---
+slug: blog
+title: "Optimizing your use of web fonts in 2022"
+published: "2021-04-26"
+description: Let me show you the steps I took to get this up and running. Shows how a post is published via MDX.
+thumbnailUrl: "/ashley-byrd-aA1jQ8xkxFM-unsplash.jpg"
+thumbnailAlt: "Alt text"
+tags: ["React", "Next.js", "MDX"]
+---
+
+import { Layout } from "../../components";
+
+My process:
+
+- fallback sans-serif and include ttf font fallback?
+- variable vs static?
+- what does font-display: optional actually do? https://css-tricks.com/almanac/properties/f/font-display/
+
+My optimization attempts seemed to make things much worse. The CLS persisted, the font I chose to self-host did not reliably render at all -- rendering on refresh less than half the time, rather than as a flash of unstyled text.
+
+- https://levelup.gitconnected.com/how-to-self-host-fonts-in-nextjs-5a9930d8c67a
+- https://github.com/vercel/next.js/discussions/25389
+- https://wpspeedmatters.com/self-host-google-fonts/
+- https://sia.codes/posts/making-google-fonts-faster/
+  ^ this one
+- https://www.aleksandrhovhannisyan.com/blog/downloading-and-optimizing-google-fonts/#2-downloading-woff2s-directly-from-googles-servers
+- https://google-webfonts-helper.herokuapp.com/fonts/inter?subsets=latin
+- https://css-tricks.com/how-to-load-fonts-in-a-way-that-fights-fout-and-makes-lighthouse-happy/
+- https://csswizardry.com/2020/05/the-fastest-google-fonts/
+- https://iainbean.com/posts/2021/5-steps-to-faster-web-fonts/
+
+# Optimizing your use of web fonts in 2022
+
+## TL;DR
+
+1. If fetching your fonts from a remote server, link them in HTML rather than importing them in CSS
+2. If self-hosting your fonts, pay attention to file sizes: make sure you're using optimized font files!
+3. Whether self-hosting or fetching from Google Fonts, preload your fonts for faster page loads
+4. WOFF2 and WOFF should be your first choice for font file types
+5. Use `@font-face` and the `font-display` descriptor to mitigate layout shift, but take a moment to read about what each option does. There are tradeoffs for each one.
+
+While working on my last Next.js project, I did what I've always done when establishing a basic app design: I picked an appealing web-ready font, then copied a css or HTML code snippet, dropped it into my project, and happily moved on to more interesting problems. Bada-bing.
+
+But without having implemented any optimization steps, right out of the gate I've got a problem.
+
+[embed gif]
+
+Depending on how you fetch your web fonts, it's common for a page to show a flash of unstyled or invisible text -- commonly referred to as "FOUT" and "FOIT" -- while the fonts are being loaded. There is a lot of content out there on this topic, and it's not my... Neither is particularly desirable, and we can do our best to mitigate.
+
+This is not a deep-dive into the performance implications of external or self-hosted fonts. Excellent writing has aleady been done on that topic. Check out ..., ..., and ... . This is a review of what I had to implement to achieve short load times and manage flashes of unstyled and invisible text in my Next.js project.
+
+Some poking around reveals that the modern conventional wisdom around optimal usage of web fonts includes:
+
+- Self-host your fonts rather than requesting them from Google fonts
+- Preload your font files
+- Prevent layout shift by making use of `@font-face` and the `font-display` descriptor
+
+Also, consider
+
+- using variable fonts and
+- subsetting your fonts
+
+However, I've found there to be some pitfalls here that can negatively impact your project's performance if you're not careful.
+
+[skip to tldr?]
+
+## I don't want to self-host my fonts
+
+That's fine. You can still have a modern and performant web app without self-hosting your fonts.
+
+## Sourcing font files
+
+## self-hosting
+
+[tests: self-hosted vs optimized non-self-hosted?]
+
+After selecting a font for a recent Next.js project I was working on, I had a look to see what people consider to be best practices when using web fonts. I quickly found my way to Lee Robinson's blog post: [Web Fonts in 2021](https://leerob.io/blog/fonts), which seems to be staple reference.
+
+font-face is a relatively modern tool built to give us control over where me make these compromises.
+
+## File formats
+
+What font format should I use?
+woff vs woff2 vs ttf?
+
+Where should I get it?
+Pay attentiont to file sizes. You can download the most up-to-date font release from Google, or better yet, directly from the Github repo, but the files are not likely to be optimized. The result can be unavoidable flashes of unstyled or invisible text, as well as large payloads being sent to users.
+
+## Preloading font
+
+## Self-hosting
+
+## What does `font-display` do for me?
+
+"Optional"
+
+## Should I use a variable font?
+
+## Conclusion
+
+Perhps the most complete solution involves building for compromise with a fallback font htat's consciously chosen to resemble your font of choice, such that the FOUT is not so notable.
+
+While I certainly don't like seeing the flash of unstyledtext, I do want to feel confident that someone viewing a web app I've built is seeing it as designed, so this option doesn't feel satisying to me.
+
+## Summary
+
+- mkae use of `font-display`, but know what it does. Each option comes with tradeoffs. `optional` might prevent cls, but in my case I didn't feel that the tradeoff was worth it.
+
+export default ({ children }) => <Layout>{children}</Layout>;
