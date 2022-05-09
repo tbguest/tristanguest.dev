@@ -22,6 +22,7 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--background-color);
   color: var(--font-color);
+  line-height: 1.5;
 }
 
 a {

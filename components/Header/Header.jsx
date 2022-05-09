@@ -16,6 +16,10 @@ const Header = () => {
         />
       </div>
       <h1 className={styles.title}>Tristan Guest</h1>
+      <p className={styles.description}>
+        I&apos;m a software developer building tools for visualizing data using
+        JavaScript and React.
+      </p>
     </header>
   );
 };

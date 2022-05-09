@@ -15,14 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <p className={styles.description}>
-        I&apos;m an oceanographer and software developer. I think about waves,
-        currents, and tides, and I enjoy building web-friendly pipelines for
-        data. I also like building front-end web experiences using React.
-      </p>
-      <p className={styles.description}>
-        Contact me if you see something here you&apos;d like to chat about!
-      </p>
+
       <Social />
     </div>
   );
