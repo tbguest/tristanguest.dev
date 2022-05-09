@@ -20,7 +20,7 @@
 .profile_image_container {
   /* padding-bottom: 1rem; */
   padding: 2rem 0 1rem 2rem;
-  border-radius: 50px;
+  border-radius: 50%;
 }
 
 .profile_image {
