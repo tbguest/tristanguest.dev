@@ -1,0 +1,221 @@
+---
+slug: blog
+title: "A Practical Guide to Self-Hosting Web Fonts"
+published: "2021-04-26"
+description: Let me show you the steps I took to get this up and running. Shows how a post is published via MDX.
+thumbnailUrl: "/ashley-byrd-aA1jQ8xkxFM-unsplash.jpg"
+thumbnailAlt: "Alt text"
+tags: ["React", "Next.js", "MDX"]
+---
+
+import { Layout } from "../../components";
+
+While spinning up my last project, I did what many of us do when considering font design: I picked an appealing web-ready font, copied a CSS or HTML code snippet, dropped it into my project, and happily moved on to more stimulating problems.
+
+But without having implemented any optimization steps, right out of the gate I had a problem:
+
+![ezgif.com-gif-maker.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1651100605566/a1YKtncvI.gif)
+
+Since I was building a static landing page, I felt that there was really no excuse not to have my content render exactly how I'd designed it to render, that is, without such an obvious flash of unstyled text.
+
+## Common wisdom
+
+Depending on how you handle your web fonts, it's common for a page to show a flash of unstyled or invisible text, commonly referred to as "[FOUT](https://fonts.google.com/knowledge/glossary/fout)" and "[FOIT](https://fonts.google.com/knowledge/glossary/foit)", while the web fonts are being loaded. Both FOUT and FOIT can degrade common site experience and performance metrics like [CLS](https://web.dev/cls/), [FCP](https://web.dev/first-contentful-paint/), and [LCP](https://web.dev/lcp/), and neither is particularly desirable.
+
+We have the tools we need to mitigate these effects in ways most suitable for our use-cases. But, if we take these tools for granted we're likely to end up with undesired effects on performance.
+
+Some prevailing wisdom around optimal usage of web fonts includes:
+
+- self-host your fonts rather than requesting them from Google Fonts
+- preload your font files
+- prevent layout shift by making use of the CSS `@font-face` API and its `font-display` descriptor
+- use variable fonts
+- subset your fonts
+
+As far as I'm concerned this is all good advice. There are already loads of great resources outlining how to self-host web fonts. However, there are some practical considerations involved, some of which may not be obvious, particularly if you haven't taken these steps before.
+
+My objective with this post is to give a quick review of what's involved in effectively implementing the practices outlined above, and how to avoid some pitfalls that can negatively impact your site's performance.
+
+## A quick primer
+
+### Self-Hosting Font Files
+
+Rather than relying on a remote server to fetch your font styles, you can incorporate the font files into your project and host them from wherever your project is hosted.
+
+Self-hosting gives you autonomy over the font files your project relies on, and [saves you an HTTP request](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control), though there's no guarantee it will lead to faster load times.
+
+[Here's a guide from Google Fonts](https://fonts.google.com/knowledge/using_type/self_hosting_web_fonts) if you'd like to read a bit more.
+
+### File formats
+
+If you're doing this for the first time, you might notice that there are a number of font format options available (`TTF`, `OTF`, `EOT`, `WOFF`, `WOFF2`, and `SVG`, for starters).
+
+I'll leave it to you to read more about these options. For now, just know that `WOFF2` and `WOFF` should be your first choices for use in modern browsers. If you're targeting broader support that includes legacy browsers, you'll want to include some others (see the "best support" versus "modern browsers" options in this [google-webfonts-helper tool](https://google-webfonts-helper.herokuapp.com/fonts)).
+
+Getting your hands on a font file of the format you're looking for might not be sufficient. Depending on how you source your font styles, some optimization steps might be necessary.
+
+## Sourcing your font files
+
+There are a few options for sourcing your font files:
+
+1. You can download complete (unoptimized) font packages from Google Fonts or from the font's source repo,
+2. you can download optimized font files directly via Google Fonts stylesheets, or
+3. you can download or manually optimize files using a third-party tool.
+
+### Google Fonts or Github
+
+You can download complete font packages from Google Fonts or from the project's source repository. For example, here's the source repo for the popular _Inter_ font package: [https://github.com/rsms/inter](https://github.com/rsms/inter). Nothing is stopping you from using these font files directly in your project, but a look at the file sizes reveals that there's quite a lot to them. At the time-of-writing, the `WOFF2` Inter variable font file from the source repo weighs in at 329 kB. Heavy! From Google Fonts you'll get files in the bulkier `TTF` file format. Relying on large files will almost guarantee flashes of unstyled or invisible text, and depending on your use of the `font-display` descriptor, your font may not load at all (more on that below).
+
+If you're set on using the most up-to-date font set, you can use a package like [subfont](https://github.com/Munter/subfont) or [glyphhanger](https://github.com/zachleat/glyphhanger) to optimize and subset full-size file sizes pulled from Google Fonts or a Github source. This could be your best choice if you're keen to self-host a variable font, and if you'd like complete control over your level of browser support and subsetting.
+
+### Download from Google Fonts stylesheets
+
+You can download optimized `WOFF2` font files directly from Google Fonts stylesheets. In the Google Fonts interface, after navigating to the font you're after and selecting weights, follow the URL in the `<link>` tag that Google Fonts has assembled.
+
+![google-fonts-links.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1651937844462/M4GfDv9XS.png align="left")
+
+You'll notice it links to a series of `@font-face` declarations. You can download the file by navigating to the address in the `url` field in your browser.
+
+```css
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v11/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+```
+
+You can then paste the `@font-face` declaration in your CSS file, replacing the `src` URL with the path to the downloaded file in your project.
+
+Provided you're working in a modern browser, the files will be in `WOFF2` format.
+
+If you're after a variable font, edit the URL to reflect the range of weights you need. For example:
+
+```
+https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap
+```
+
+### Third-party tools
+
+Alternatively, you could use something like [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts), which offers quick access to optimized font files that are ready for use in your project. In this case, the combined size of the `WOFF` and `WOFF2` Inter font files at regular font weight is less than 40 kB.
+
+> The google-webfonts-helper tool is my preferred source for font files right now. It doesn't provide a route to using variable fonts, and the served files may not be as up-to-date as files retrieved directly from Google Fonts or from source, but it's a fast and effective way to get the job done.
+
+You can achieve some of the same benefits of self-hosting by using package-based fonts from a source like [fontsource.org](https://fontsource.org/). If you like the idea of managing your fonts the same way you manage the rest of your app's dependencies, then this is a good bet. Though, without use of the `font-face` API, you lose the ability to control how your fonts load. In other words, less control over FOUT and FOIT.
+
+If you're manually optimizing a font package from source or Google Fonts, use an optimization tool like subfont or glyphhanger (see above).
+
+## Optimization steps
+
+### Use `font-display` To Mitigate FOUT and FOIT
+
+The CSS `@font-face` API offers the `font-display` descriptor which gives us control over how the web fonts are loaded.
+
+```css
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: optional;
+  src: url(/fonts/inter-var.woff2) format("woff2");
+}
+```
+
+Our options are `auto`, `swap`, `block`, `fallback`, and `optional`. Here's a great resource from [Monica Dinculescu](https://meowni.ca/) that describes each of them: [https://font-display.glitch.me](https://font-display.glitch.me/).
+
+In short, the `block` tag favours FOIT and `swap` favours FOUT. The `optional` tag is the only one of these that guarantees no flash of unstyled text, and therefore no font-based layout shift. It accomplishes this by introducing a very short blocking period during which the browser tries to fetch the requested font. If the request takes longer than the blocking period (for example, if your font file is large or your connection speed is slow), the fallback is used instead. In other words, the use of your selected web font is "optional".
+
+Despite the guarantee of no layout shift, using the `optional` tag has obvious drawbacks, particularly if you're relying on your chosen font for branding or specific design purposes. It is otherwise a good option, **provided it's paired with other optimization steps** discussed in this article.
+
+### Preload your fonts
+
+Use HTML `<link>` elements in the `<head>` of your document to tell the browser to load your fonts with high priority.
+
+```html
+<link
+  rel="preload"
+  href="/fonts/inter-var.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+```
+
+Setting the `<link>` element's `rel` attribute to [`"preload"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload) identifies a resource that the page should have in advance of the browser's typical rendering process, making the resource less likely to block the page's render. See [this post by Sia Karamalegos](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control) for more on this, including some words of caution.
+
+### Subset your fonts
+
+You likely don't need access to all the languages and glyphs that ship with a complete font package.
+
+Use the `unicode-range` field in your `@font-face` declaration to limit what you request from the font file.
+
+Here's the Latin subset from a Google Fonts stylesheet:
+
+```css
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v11/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+```
+
+## Access to variable fonts
+
+Variable fonts allow for much more flexibility in your font design than static fonts, without having to deal with a folder full of files. Very cool. You can [read some more about variable fonts here](https://web.dev/variable-fonts/).
+
+If using [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts), you're stuck with static font files.
+
+If you're happy to target modern browsers, can manually pull a variable `WOFF2` font file from a Google Fonts stylesheet, as outlined above.
+
+If you'd like to include the [1 in 30 or so people](https://caniuse.com/woff2) still using browsers that don't support `WOFF2`, your best bet (as far as I'm aware) is to start with a full font package either from source or from Google Fonts, then use a tool like [subfont](https://github.com/Munter/subfont) or [glyphhanger](https://github.com/zachleat/glyphhanger) to convert and subset the font based on the breadth of browser support you're after.
+
+## I don't want to self-host my fonts
+
+There are some downsides to self-hosting. You have to do a bit more work up front, though it's little enough that this is arguably a non-issue. Most importantly, you take responsibility for ensuring your font styles will work across browsers.
+
+Google Fonts dynamically sets their link URL based on the client's browser. For example, consider the page of `@font-face` declarations you see after selecting a font in the Google Fonts interface, then navigating to the URL in the `<link>` tag. If you navigate to this page on different browsers (a desktop versus mobile browser, or an older browser) you may notice that the `src` URLs are not static, perhaps offering different paths to `WOFF2` files, or offering something other than `WOFF2`. The point is that Google has conveniently abstracted that decision away, and by self-hosting our fonts we instead bear that responsibility.
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+  rel="stylesheet"
+/>
+```
+
+Fortunately, we can still leverage the `font-display` property to control how our fonts render, even when we're not hosting them ourselves. Note the `&display=swap` tag at the end of the URL in the `<link>` tag. Use that statement to determine whether to eliminate FOUT by setting `display=optional`, or whether to use a different loading option.
+
+If you're not self-hosting your fonts, be sure to use `<link>` in the head of your HTML rather than than `@import`ing in CSS.
+
+Rest assured that you can still have performant pages without self-hosting your fonts.
+
+## Summary
+
+Regardless of where you've sourced your fonts, there are three steps required to self-host them effectively:
+
+1. Have the downloaded **and optimized** font files accessible in your project (for example, in `/public/fonts/`).
+2. Reference those files in a `@font-face` declaration, with a `src` path pointing to your static files.
+3. Preload the fonts using a `<link>` statement in the `<head>` of your HTML document.
+
+If self-hosting your fonts, pay attention to file sizes: make sure you're using optimized font files!
+
+Make use of `font-display`, but know what it does. Using `font-display: optional` is a good bet most of the time, but you might want to consider something else for text that is branding-focused.
+
+Our approaches to optimizing web-fonts will no doubt continue to evolve over the coming months and years. If you see that any of the points in this post are off the mark, or if there are alternative methods that you find effective, please leave a comment!
+
+## Resources:
+
+- Understanding `font-display`: [https://font-display.glitch.me](https://font-display.glitch.me/)
+- Making Google Fonts Faster in 2022: [https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control)
+- google-webfonts-helper: [https://google-webfonts-helper.herokuapp.com/fonts](https://google-webfonts-helper.herokuapp.com/fonts)
+
+export default ({ children }) => <Layout>{children}</Layout>;
