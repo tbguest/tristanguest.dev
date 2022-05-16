@@ -17,7 +17,8 @@ const Header = () => {
       </div>
       <h1 className={styles.title}>Tristan Guest</h1>
       <p className={styles.description}>
-        I&apos;m a software developer building tools for visualizing data using
+        I&apos;m a full-stack software developer working on the Atlantic coast
+        of Canada. I&apos;m building tools to help visualize data with
         JavaScript and React.
       </p>
     </header>
