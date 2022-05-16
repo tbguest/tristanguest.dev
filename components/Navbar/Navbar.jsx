@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <>
-      <nav className={styles.nav_container}>
+      {/* <nav className={styles.nav_container}>
         <a className={styles.nav_link} href={"/"}>
           Home
         </a>
@@ -12,7 +12,8 @@ const Navbar = () => {
           Blog
         </a>
         <DarkMode />
-      </nav>
+      </nav> */}
+      <DarkMode />
     </>
   );
 };
