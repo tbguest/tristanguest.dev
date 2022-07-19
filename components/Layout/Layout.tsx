@@ -1,15 +1,15 @@
 import React from "react";
-import { DarkMode, Footer } from "../../components";
+import { Navbar, Footer } from "..";
 import styles from "./Layout.module.css";
 
-const BlogLayout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className={styles.container}>
-      <DarkMode />
+      <Navbar />
       <main>{children}</main>
       <Footer />
     </div>
   );
 };
 
-export default BlogLayout;
+export default Layout;
