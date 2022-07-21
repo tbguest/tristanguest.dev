@@ -1,43 +1,59 @@
-import { useTheme } from "next-themes";
-import React, { useState, useEffect, useRef } from "react";
-import { IoIosSunny } from "react-icons/io";
-import { WiMoonAltWaningCrescent4 } from "react-icons/wi";
+import { useEffect, useRef, useState } from "react";
+import { IoIosMoon, IoIosSunny } from "react-icons/io";
 
 import styles from "./DarkMode.module.css";
 
 const DarkMode = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
 
+  // Used to prevent the button animation on page load
   const isInitial = useRef(true);
 
-  const toggleTheme = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+  const handleToggle = () => {
+    setDarkTheme(!darkTheme);
     isInitial.current = false;
   };
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const initialColorValue = root.style.getPropertyValue(
+      "--initial-color-mode"
+    );
+    setDarkTheme(initialColorValue === "dark");
+  }, []);
 
-  if (!mounted) return null;
+  useEffect(() => {
+    if (darkTheme !== undefined) {
+      if (darkTheme) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        window.localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        window.localStorage.setItem("theme", "light");
+      }
+    }
+  }, [darkTheme]);
 
   return (
     <div className={styles.theme_toggle_wrapper}>
       <button
-        onClick={toggleTheme}
+        onClick={handleToggle}
         className={styles.button}
-        aria-label={
-          theme === "light" ? "Switch to dark mode" : "Switch to light mode"
-        }
+        aria-label={darkTheme ? "Activate light mode" : "Activate dark mode"}
       >
-        {theme === "light" ? (
-          <WiMoonAltWaningCrescent4
-            className={isInitial.current ? styles.icon_initial : styles.icon}
-          />
-        ) : (
-          <IoIosSunny
-            className={isInitial.current ? styles.icon_initial : styles.icon}
-          />
-        )}
+        <div
+          className={
+            isInitial.current
+              ? styles.icon_wrapper_initial
+              : styles.icon_wrapper
+          }
+        >
+          {!darkTheme ? (
+            <IoIosSunny className={styles.icon} />
+          ) : (
+            <IoIosMoon className={styles.icon} />
+          )}
+        </div>
       </button>
     </div>
   );
