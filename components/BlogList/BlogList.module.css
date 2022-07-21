@@ -15,7 +15,7 @@
 
 /* to override global <a> styling */
 .blog_item a {
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 }
 
 .blog_link {
