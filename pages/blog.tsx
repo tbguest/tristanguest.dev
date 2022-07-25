@@ -1,10 +1,12 @@
-import Head from "next/head";
-import { Header, BlogList } from "../components";
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
+import Head from "next/head";
+import path from "path";
+import { BlogList } from "../components";
+import { BlogPosts } from "../models";
 
-export default function Blog({ posts }) {
+export default function Blog({ posts }: BlogPosts) {
+  console.log("staticprops posts", posts);
   return (
     <>
       <Head>
@@ -36,6 +38,7 @@ export const getStaticProps = async () => {
       slug: filename.split(".")[0],
     };
   });
+
   return {
     props: {
       posts,
