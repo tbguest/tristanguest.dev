@@ -23,29 +23,37 @@
   background: rgba(144, 144, 144, 0.1);
 }
 
-.icon_initial {
+.icon_wrapper_initial {
   position: absolute;
-  height: 70%;
-  width: 70%;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.icon {
+.icon_wrapper {
   position: absolute;
-  height: 70%;
-  width: 70%;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   animation-fill-mode: forwards;
   animation-duration: 400ms;
   animation-name: slidein;
+  transition: color 0.25s;
 }
 
-.icon:active {
+.icon_wrapper:active {
   animation-name: slideout;
+}
+
+.icon {
+  height: 70%;
+  width: 70%;
+  color: var(--color-primary);
+  transition: color 0.25s;
 }
 
 @keyframes slidein {

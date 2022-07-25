@@ -1,8 +1,12 @@
 import React from "react";
-import { Navbar, Footer } from "../../components";
+import { Navbar, Footer } from "..";
 import styles from "./Layout.module.css";
 
-const Layout = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className={styles.container}>
       <Navbar />
