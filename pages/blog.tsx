@@ -6,7 +6,6 @@ import { BlogList } from "../components";
 import { BlogPosts } from "../models";
 
 export default function Blog({ posts }: BlogPosts) {
-  console.log("staticprops posts", posts);
   return (
     <>
       <Head>
