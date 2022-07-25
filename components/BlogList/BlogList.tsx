@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
+import { BlogPosts } from "../../models";
 import { dateToString } from "../helpers";
-
 import styles from "./BlogList.module.css";
 
-const BlogList = ({ posts }) => {
+const BlogList = ({ posts }: BlogPosts) => {
   return (
     <ul className={styles.container}>
       {posts?.map((post, index) => (
@@ -29,7 +28,7 @@ const BlogList = ({ posts }) => {
                 <p>{post.frontMatter.description}</p>
                 <span className={styles.keywords_wrapper}>
                   {post.frontMatter.tags.map((tag) => (
-                    <span className={styles.keywords} key={tag}>
+                    <span className={styles.keywords} key={String(tag)}>
                       <small>{tag}</small>
                     </span>
                   ))}
