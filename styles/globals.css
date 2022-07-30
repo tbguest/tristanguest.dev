@@ -14,24 +14,33 @@
     url("/fonts/inter-v11-latin-900.woff") format("woff");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+
 :root {
-  --content-max-width: 46rem;
+  --content-max-width: 54rem;
   --title-font-size: 2.3rem;
   --body-font-size: 1rem;
   --gutter: 2rem;
-  --border-radius: 4px;
-  --color-primary: #181818;
+  --border-radius: 8px;
+  --color-primary: rgb(14, 20, 27);
   --color-background: #ffffff;
+  --color-background-accent: #fafafa;
   --color-primary-accent: #5b34da;
   --color-secondary-accent: #358ef1;
   --color-highlight: rgba(144, 144, 144, 0.1);
+  --color-font-accent: #181818;
+  --drop-shadow: rgb(204, 204, 204);
+  --gutter: 32px;
 }
 
 [data-theme="dark"] {
   --color-primary: #ffffff;
   --color-background: #181818;
+  --color-background-accent: #131313;
   --color-primary-accent: #9d86e9;
   --color-secondary-accent: #61dafb;
+  --color-font-accent: #b1b1b1;
+  --drop-shadow: var(--color-background-accent);
 }
 
 html,
