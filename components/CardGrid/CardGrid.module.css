@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  gap: 40px;
+  margin-top: var(--gutter);
+  margin-bottom: var(--gutter);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    display: grid;
+    grid-template: auto / 1fr;
+    gap: 40px;
+  }
+}
