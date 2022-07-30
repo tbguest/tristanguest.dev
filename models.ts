@@ -14,3 +14,17 @@ export interface Post {
 export interface BlogPosts {
   posts: Post[];
 }
+
+export interface Project {
+  title: String;
+  description: String;
+  image: {
+    url: String;
+    alt: String;
+  };
+  tags: String[];
+  link: {
+    url: String;
+    github: String;
+  };
+}

@@ -10,8 +10,7 @@
   padding: 0px;
   overflow: hidden;
   cursor: pointer;
-  outline: none;
-  border-radius: 50px;
+  border-radius: 50%;
   background: transparent;
   border: none;
   display: flex;
