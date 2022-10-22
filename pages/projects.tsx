@@ -20,7 +20,7 @@ const projectList = [
   {
     title: "Dev Portfolio",
     description:
-      "This website, built with TypeScript and Next.js. A place where I can try new things and share projects I've worked on. It includes a blog page leveraging MDX, though this component isn't live yet.",
+      "My personal landing page and portfolio site, built with TypeScript and Next.js. A place where I can try new things and share projects I've worked on. It includes a blog page leveraging MDX, though this component isn't live yet.",
     image: {
       url: "/assets/projects-tristanguest.png",
       alt: "Thumbnail view of the author's dev portfolio landing page",
@@ -32,17 +32,17 @@ const projectList = [
     },
   },
   {
-    title: "GitHub Repo Statistics",
+    title: "Repo Metrics",
     description:
-      "An experimental Next.js project built to explore the GitHub GraphQL API. Repositories can be compared based on development effort metrics and commits over time. User accounts backed by a MongoDB database are in the works, and will allow curated user-specific repo lists.",
+      "A Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
     image: {
       url: "/assets/projects-github.png",
       alt: "Thumbnail view of a GitHub repo statistics project page",
     },
-    tags: ["Next.js", "GraphQL", "Apollo Client", "MongoDB", "OAuth"],
+    tags: ["Next.js", "TypeScript", "SWR", "MongoDB", "Next-Auth", "Chart.js"],
     link: {
-      url: "https://graphql-github-stats.vercel.app/",
-      github: "https://github.com/tbguest/graphql-github-stats/",
+      url: "https://repo-metrics.vercel.app/",
+      github: "https://github.com/tbguest/repo-metrics/",
     },
   },
   {
