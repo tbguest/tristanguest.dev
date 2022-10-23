@@ -18,6 +18,28 @@ const projectList = [
     },
   },
   {
+    title: "Repo Metrics",
+    description:
+      "A Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
+    image: {
+      url: "/assets/projects-github.png",
+      alt: "Thumbnail view of a GitHub repo statistics project page",
+    },
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "SWR",
+      "MongoDB",
+      "Next-Auth",
+      "Chart.js",
+      "Tailwind CSS",
+    ],
+    link: {
+      url: "https://repo-metrics.vercel.app/",
+      github: "https://github.com/tbguest/repo-metrics/",
+    },
+  },
+  {
     title: "Dev Portfolio",
     description:
       "My personal landing page and portfolio site, built with TypeScript and Next.js. A place where I can try new things and share projects I've worked on. It includes a blog page leveraging MDX, though this component isn't live yet.",
@@ -29,20 +51,6 @@ const projectList = [
     link: {
       url: "https://tristanguest.dev/",
       github: "https://github.com/tbguest/tristanguest.dev/",
-    },
-  },
-  {
-    title: "Repo Metrics",
-    description:
-      "A Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
-    image: {
-      url: "/assets/projects-github.png",
-      alt: "Thumbnail view of a GitHub repo statistics project page",
-    },
-    tags: ["Next.js", "TypeScript", "SWR", "MongoDB", "Next-Auth", "Chart.js"],
-    link: {
-      url: "https://repo-metrics.vercel.app/",
-      github: "https://github.com/tbguest/repo-metrics/",
     },
   },
   {
