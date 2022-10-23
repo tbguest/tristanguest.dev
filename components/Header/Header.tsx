@@ -18,7 +18,7 @@ const Header = () => {
       <h1 className={styles.title}>Tristan Guest</h1>
       <p className={styles.description}>
         {
-          "I'm a full-stack software developer working on the Atlantic coast of Canada. I'm building tools to help visualize data with JavaScript and React."
+          "I'm a software developer working on the Atlantic coast of Canada. I love building web applications with full-stack tools, and I think JavaScript is up there with the bicycle as a benchmark of human ingenuity. "
         }
       </p>
     </header>
