@@ -4,9 +4,31 @@ import { CardGrid } from "../components/CardGrid/CardGrid";
 
 const projectList = [
   {
+    title: "BiggerPicture",
+    description:
+      "BiggerPicture is a SaaS solution for optimizing scheduling between shippers, transportation, and consignees, drastically reducing assessorial costs and delays. Backed by Y Combinator. I'm helping BiggerPicture develop their platform using React, Next.js, and full-stack TypeScript with tRPC.",
+    image: {
+      url: "/assets/projects-biggerpicture.png",
+      alt: "Thumbnail view of the BiggerPicture landing page",
+    },
+    tags: [
+      "TypeScript",
+      "React.js",
+      "Node.js",
+      "tRPC",
+      "Prisma",
+      "Planetscale",
+      "MySQL",
+    ],
+    link: {
+      url: "https://biggerpicture.co/",
+      github: "https://biggerpicture.co/",
+    },
+  },
+  {
     title: "LunaOcean Data Platform",
     description:
-      "Core member of a small team building the LunaOcean ocean weather app, built with TypeScript, Next.js, and a serverless backend leveraging AWS Lambda and MongoDB. This project represents the bulk of my professional software engineering work over the last 2-3 years.",
+      "LunaOcean consolidates real-time and forecasted wind, wave, and ocean current data in a modern map interface. I worked on this project from inception, building with TypeScript, Next.js, and a serverless backend leveraging AWS Lambda and MongoDB. The WebGL-based particle animation for visualizing currents was a particularly interesting challenge.",
     image: {
       url: "/assets/projects-luna.png",
       alt: "Thumbnail view of the LunaOcean ocean weather app, built in part by the author",
@@ -20,7 +42,7 @@ const projectList = [
   {
     title: "Repo Metrics",
     description:
-      "A Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
+      "A for-fun Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
     image: {
       url: "/assets/projects-github.png",
       alt: "Thumbnail view of a GitHub repo statistics project page",
