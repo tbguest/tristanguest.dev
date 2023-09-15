@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Page.module.css";
 import { CardGrid } from "../components/CardGrid/CardGrid";
 
-const projectList = [
+const projects = [
   {
     title: "BiggerPicture",
     description:
@@ -91,6 +91,8 @@ const projectList = [
   },
 ];
 
+export type Project = (typeof projects)[0];
+
 export default function Projects() {
   return (
     <div className={styles.container}>
@@ -103,7 +105,7 @@ export default function Projects() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <h1>Projects</h1>
-      <CardGrid data={projectList} />
+      <CardGrid data={projects} />
     </div>
   );
 }
