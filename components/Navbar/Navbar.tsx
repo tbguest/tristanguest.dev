@@ -6,14 +6,14 @@ const Navbar = () => {
   return (
     <>
       <nav className={styles.nav_container}>
-        <Link href={"/"}>
-          <a className={styles.nav_link}>Home</a>
+        <Link href={"/"} className={styles.nav_link}>
+          Home
         </Link>
-        {/* <Link href={"/blog"}>
-          <a className={styles.nav_link}>Blog</a>
+        {/* <Link href={"/blog"} className={styles.nav_link}>
+          Blog
         </Link> */}
-        <Link href={"/projects"}>
-          <a className={styles.nav_link}>Projects</a>
+        <Link href={"/projects"} className={styles.nav_link}>
+          Projects
         </Link>
         <DarkMode />
       </nav>

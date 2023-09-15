@@ -3,7 +3,23 @@ import matter from "gray-matter";
 import Head from "next/head";
 import path from "path";
 import { BlogList } from "../components";
-import { BlogPosts } from "../models";
+
+export type Post = {
+  frontMatter: {
+    slug: string;
+    title: string;
+    published: Date;
+    description: string;
+    thumbnailUrl: string;
+    thumbnailAlt: string;
+    tags: string[];
+  };
+  slug: string;
+};
+
+export type BlogPosts = {
+  posts: Post[];
+};
 
 export default function Blog({ posts }: BlogPosts) {
   return (

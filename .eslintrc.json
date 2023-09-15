@@ -1,3 +1,47 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "no-relative-import-paths",
+    "simple-import-sort"
+  ],
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // Prevents "../" in file imports
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      { "allowSameFolder": true, "rootDir": "src" }
+    ],
+    // Disallow explicit any
+    "@typescript-eslint/no-explicit-any": "error",
+    // no console.xxx
+    "no-console": "error",
+    // no debugger
+    "no-debugger": "error",
+    "import/no-duplicates": "error",
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "basePath": "./src",
+        "zones": [
+          // Prevents server stuff from being imported in the frontend part
+          { "target": "./components", "from": "./server" }
+        ]
+      }
+    ],
+
+    // Enforces shorthand for objects
+    "object-shorthand": ["error", "properties"],
+    // Error on unused vars
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "ignoreRestSiblings": true }
+    ],
+    "@typescript-eslint/no-floating-promises": ["error"],
+    "@typescript-eslint/no-misused-promises": ["error"],
+    "react/jsx-key": ["error", { "checkFragmentShorthand": true }]
+  }
 }
