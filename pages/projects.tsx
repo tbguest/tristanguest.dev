@@ -104,7 +104,7 @@ export default function Projects() {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <h1>Projects</h1>
+      <h1 style={{ fontWeight: 800 }}>Projects</h1>
       <CardGrid data={projects} />
     </div>
   );

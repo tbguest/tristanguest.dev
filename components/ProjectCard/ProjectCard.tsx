@@ -4,6 +4,10 @@ import { TbExternalLink } from "react-icons/tb";
 import classes from "./ProjectCard.module.css";
 import Link from "next/link";
 import { Project } from "../../pages/projects";
+import { Roboto_Mono } from "next/font/google";
+import classNames from "classnames";
+
+const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 type Props = {
   data: Project;
@@ -33,12 +37,15 @@ export const ProjectCard = ({ data }: Props) => {
         </div>
         <div className={classes.content_wrapper}>
           <Link href={data.link.github} passHref={true} target="_blank">
-            <h2>{data.title}</h2>
+            <h2 className={robotoMono.className}>{data.title}</h2>
           </Link>
           <p>{data.description}</p>
           <span className={classes.tags_wrapper}>
             {data.tags.map((tag) => (
-              <small className={classes.tag} key={tag}>
+              <small
+                className={classNames([classes.tag, robotoMono.className])}
+                key={tag}
+              >
                 {tag}
               </small>
             ))}
