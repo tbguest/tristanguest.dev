@@ -6,3 +6,4 @@ export { default as BlogLayout } from "./Layout/BlogLayout";
 export { default as Header } from "./Header/Header";
 export { default as BlogList } from "./BlogList/BlogList";
 export { default as Navbar } from "./Navbar/Navbar";
+export { default as Home } from "./Home/Home";
