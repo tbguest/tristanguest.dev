@@ -13,7 +13,7 @@ const Navbar = () => {
           Blog
         </Link> */}
         <Link href={"/projects"} className={styles.nav_link}>
-          Projects
+          Work
         </Link>
         <DarkMode />
       </nav>
