@@ -1,9 +1,8 @@
 import Head from "next/head";
-import { Header, Social } from "../components";
-
+import { Home } from "../components";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className={styles.container}>
       <Head>
@@ -14,8 +13,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Header />
-      <Social />
+      <Home />
     </div>
   );
 }
