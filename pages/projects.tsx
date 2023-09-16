@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { CardGrid } from "../components/CardGrid/CardGrid";
 
 const projects = [
