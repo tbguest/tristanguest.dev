@@ -38,6 +38,20 @@ const projects = [
     },
   },
   {
+    title: "Instability I/O",
+    description:
+      "A gallery and playground for visualizing output from process-based models on an HTML canvas. All of the animations are procedurally generated with client-side JavaScript. Vite for module bundling. No JS frameworks.",
+    image: {
+      url: "/assets/projects-instability-io.png",
+      alt: "Thumbnail view of a page showing black and white line art",
+    },
+    tags: ["HTML", "CSS", "TypeScript", "HTML Canvas", "Vite"],
+    link: {
+      url: "https://www.instability.io/",
+      github: "https://github.com/tbguest/instability-io/",
+    },
+  },
+  {
     title: "Repo Metrics",
     description:
       "A for-fun Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
