@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { IoIosMoon, IoIosSunny } from "react-icons/io";
-
+import { useEffect, useRef, useState } from "react";
 import styles from "./DarkMode.module.css";
 
 const DarkMode = () => {

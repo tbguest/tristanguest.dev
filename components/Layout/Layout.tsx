@@ -1,4 +1,3 @@
-import React from "react";
 import { Navbar, Footer } from "..";
 import styles from "./Layout.module.css";
 import Head from "next/head";
