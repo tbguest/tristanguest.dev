@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./Header.module.css";
-import profile from "../../public/profile.png";
+import profile from "../../public/profile-grey.png";
 
 const Header = () => {
   return (
