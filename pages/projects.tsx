@@ -1,4 +1,7 @@
+import Head from "next/head";
 import { CardGrid } from "../components/CardGrid/CardGrid";
+import { Footer, Hero, Navbar } from "../components";
+import classes from "../components/Home/Home.module.css";
 
 const projects = [
   {
@@ -107,9 +110,28 @@ export type Project = (typeof projects)[0];
 
 export default function ProjectsPage() {
   return (
-    <div>
-      <h1 style={{ fontWeight: 800 }}>Projects</h1>
-      <CardGrid data={projects} />
-    </div>
+    <>
+      <Head>
+        <title>Tristan Guest</title>
+        <meta property="og:title" content={`Tristan Guest`} key="title" />
+        <meta
+          name="description"
+          content="I'm a software developer working on the Atlantic coast of Canada. I value simplicity and usability in software, and I like building with full-stack tools. I think modern JavaScript is up there with the bicycle as a benchmark of human ingenuity."
+          key="desc"
+        />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <main>
+        <Hero />
+        <div className={classes.layout}>
+          <Navbar />
+          <div>
+            <h1 style={{ fontWeight: 800 }}>Projects</h1>
+            <CardGrid data={projects} />
+          </div>
+          <Footer />
+        </div>
+      </main>
+    </>
   );
 }
