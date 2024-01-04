@@ -1,14 +1,13 @@
-import { Navbar, Footer } from "..";
-import styles from "./Layout.module.css";
 import Head from "next/head";
+import Hero from "../Hero/Hero";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import classes from "./Layout.module.css";
+import { PropsWithChildren } from "react";
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const Layout: React.FC<Props> = ({ children }) => {
+export const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Tristan Guest</title>
         <meta property="og:title" content={`Tristan Guest`} key="title" />
@@ -19,11 +18,14 @@ const Layout: React.FC<Props> = ({ children }) => {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </div>
+      <main>
+        <Hero />
+        <div className={classes.layout}>
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
+      </main>
+    </>
   );
 };
-
-export default Layout;

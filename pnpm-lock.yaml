@@ -23,6 +23,9 @@ dependencies:
   next-mdx-remote:
     specifier: ^4.4.1
     version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
+  open-simplex-noise:
+    specifier: ^2.5.0
+    version: 2.5.0
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -2801,6 +2804,10 @@ packages:
     dependencies:
       wrappy: 1.0.2
     dev: true
+
+  /open-simplex-noise@2.5.0:
+    resolution: {integrity: sha512-co7x8uWxGcgFtsJNBFqI9ylq+5Isotz2hZR7dsD5Sl+RDPGBeMEG41KAfF+5gF10ksi9Pg6DNpMHEoyTKLbejQ==}
+    dev: false
 
   /optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
