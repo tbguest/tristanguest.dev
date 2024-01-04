@@ -1,8 +1,10 @@
-.container {
+.layout {
   min-height: 100vh;
+  top: 0;
   padding: 1.5rem 2rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
   max-width: var(--content-max-width);
 }
