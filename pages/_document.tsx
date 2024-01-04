@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-// eslint-disable-next-line
 import Script from "next/script";
 import { config } from "../meta.config";
 

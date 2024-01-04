@@ -107,9 +107,9 @@ export type Project = (typeof projects)[0];
 
 export default function ProjectsPage() {
   return (
-    <div>
+    <>
       <h1 style={{ fontWeight: 800 }}>Projects</h1>
       <CardGrid data={projects} />
-    </div>
+    </>
   );
 }
