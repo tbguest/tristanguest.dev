@@ -32,7 +32,7 @@ const content = [
   },
 ];
 
-export default function Home() {
+export function Home() {
   return (
     <>
       <div className="flex flex-row items-center gap-8">
