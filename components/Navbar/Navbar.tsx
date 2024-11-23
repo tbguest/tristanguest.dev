@@ -1,4 +1,3 @@
-import { DarkMode } from "..";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 
@@ -11,7 +10,6 @@ const Navbar = () => {
       <Link href={"/projects"} className={styles.nav_link}>
         Work
       </Link>
-      <DarkMode />
     </nav>
   );
 };

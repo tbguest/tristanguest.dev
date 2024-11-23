@@ -73,34 +73,6 @@ const projects = [
       github: "https://github.com/tbguest/repo-metrics/",
     },
   },
-  {
-    title: "Dev Portfolio",
-    description:
-      "My personal landing page and portfolio site, built with TypeScript and Next.js. A place where I can try new things and share projects I've worked on. It includes a blog page leveraging MDX, though this component isn't live yet.",
-    image: {
-      url: "/assets/projects-tristanguest.png",
-      alt: "Thumbnail view of the author's dev portfolio landing page",
-    },
-    tags: ["React", "Next.js", "MDX"],
-    link: {
-      url: "https://tristanguest.dev/",
-      github: "https://github.com/tbguest/tristanguest.dev/",
-    },
-  },
-  {
-    title: "Freelance Work",
-    description:
-      "I occasionally take on freelance projects. The linked page is a recent Next.js project built for an entrepreneur in the health and wellness field. All the site's content is served from a Prismic CMS and managed by the client.",
-    image: {
-      url: "/assets/projects-coaching.png",
-      alt: "Thumbnail view of a coaching business page built for a client",
-    },
-    tags: ["Next.js", "Prismic"],
-    link: {
-      url: "https://wildoceancoaching.ca/",
-      github: "https://github.com/tbguest/wildoceancoaching/",
-    },
-  },
 ];
 
 export type Project = (typeof projects)[0];

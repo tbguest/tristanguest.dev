@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Hero from "../Hero/Hero";
-import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import classes from "./Layout.module.css";
 import { PropsWithChildren } from "react";
@@ -21,7 +20,6 @@ export const Layout = ({ children }: PropsWithChildren) => {
       <main>
         <Hero />
         <div className={classes.layout}>
-          <Navbar />
           {children}
           <Footer />
         </div>

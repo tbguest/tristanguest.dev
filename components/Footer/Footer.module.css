@@ -6,15 +6,12 @@
   padding: 1rem 0 8rem 0;
   border-top: 1px solid #eaeaea;
   align-items: left;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  font-size: 0.9rem;
 }
 
 .footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.footer p {
-  font-size: 0.8rem;
+  color: grey;
 }
