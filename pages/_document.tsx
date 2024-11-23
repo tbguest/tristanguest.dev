@@ -8,7 +8,6 @@ export default function Document() {
         <meta name="application-name" content={config.appName} />
         <meta name="theme-color" content={config.themeColor} />
 
-        {/* <meta name="twitter:card" content="summary_large_image" key="twcard" /> */}
         <meta name="twitter:card" content="summary" key="twcard" />
         <meta name="twitter:url" content={config.domain} />
         <meta name="twitter:title" content={config.appShortName} />

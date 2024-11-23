@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 import profile from "../../public/wizard-sprite.png";
-import styles from "./Profile.module.css";
+import classNames from "classnames";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -35,49 +35,35 @@ const content = [
 export default function Home() {
   return (
     <>
-      <div className={styles.header}>
-        <div className={styles.profile_image_container}>
-          <Image
-            src={profile}
-            alt="A pixel art wizard offering a floating laptop"
-            width={192}
-            height={224}
-            priority={true}
-            unoptimized
-          />
-        </div>
+      <div className="flex flex-row items-center gap-8">
+        {/* <div className="flex flex-col"> */}
+        <Image
+          src={profile}
+          alt="A pixel art wizard offering a floating laptop"
+          width={192}
+          height={224}
+          priority={true}
+          unoptimized
+        />
 
         <section>
           <h1
-            className={spaceGrotesk.className}
-            style={{ fontWeight: 900, marginBottom: 0 }}
+            className={classNames([
+              spaceGrotesk.className,
+              "font-black text-3xl mb-2",
+            ])}
           >
             Tristan Guest
           </h1>
-          <p className={styles.description}>
+          <p className={"mb-4"}>
             {`I’m a full-stack web developer, data scientist, and builder. `}
           </p>
-          <div style={{ display: "flex" }}>
-            <Link
-              href="/projects"
-              // className={spaceGrotesk.className}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                // padding: "0.5rem 1rem",
-                // fontSize: "0.8rem",
-                textDecoration: "none",
-                cursor: "pointer",
-                color: "#416494",
-                // color: "#3B81F6",
-              }}
-            >
-              {/* Dev portfolio <FaArrowRightLong /> */}
-              Go to my portfolio <FaArrowRightLong />
-              {/* <FaArrowRightLong />Go to my portfolio */}
-            </Link>
-          </div>
+          <Link
+            href="/projects"
+            className="flex items-center gap-1 text-anchor"
+          >
+            Go to my portfolio <FaArrowRightLong />
+          </Link>
         </section>
       </div>
 
@@ -91,39 +77,21 @@ const TightContent = () => {
   return (
     <>
       <h2
-        className={spaceGrotesk.className}
-        style={{
-          marginBottom: 16,
-          marginTop: 36,
-          fontSize: "1.2rem",
-        }}
+        className={classNames([
+          spaceGrotesk.className,
+          "mb-4 mt-9 font-semibold text-xl",
+        ])}
       >
-        Writing & code
+        Writing & Code
       </h2>
-      <ul
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 4,
-          marginBottom: 36,
-          padding: 0,
-          listStylePosition: "inside",
-          listStyleType: "none",
-        }}
-      >
+      <ul className="flex flex-col gap-4 mb-9">
         {content.map((item) => {
           return (
             <li key={item.id}>
-              <Link
-                href="/projects"
-                style={{ marginBottom: 0, color: "#416494" }}
-                // style={{ marginBottom: 0, color: "#3B81F6" }}
-              >
+              <Link href="/projects" className="mb-0 text-anchor">
                 {item.title}
               </Link>
-              <p style={{ marginTop: 0, fontSize: "0.9rem", color: "grey" }}>
-                {item.intro}
-              </p>
+              <p className="mt-0.5 text-sm text-gray-500">{item.intro}</p>
             </li>
           );
         })}
