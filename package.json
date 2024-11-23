@@ -18,7 +18,8 @@
     "open-simplex-noise": "^2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.11.0"
+    "react-icons": "^4.11.0",
+    "react-pdf": "^9.1.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.19",
@@ -26,11 +27,14 @@
     "@types/react": "18.2.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "8.22.0",
     "eslint-config-next": "13.4.19",
     "eslint-plugin-no-relative-import-paths": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "postcss": "^8.4.49",
     "prettier": "2.8.4",
+    "tailwindcss": "^3.4.15",
     "typescript": "^5.2.2"
   }
 }

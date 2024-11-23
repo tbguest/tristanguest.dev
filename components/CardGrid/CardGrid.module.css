@@ -1,9 +1,11 @@
 .grid {
   display: grid;
-  grid-template: auto / 1fr 1fr;
+  grid-template: auto / 1fr;
   gap: 40px;
   margin-top: var(--gutter);
   margin-bottom: var(--gutter);
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
