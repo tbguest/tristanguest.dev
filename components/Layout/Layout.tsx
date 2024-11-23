@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Hero from "../Hero/Hero";
 import Footer from "../Footer/Footer";
-import classes from "./Layout.module.css";
 import { PropsWithChildren } from "react";
 
 export const Layout = ({ children }: PropsWithChildren) => {
@@ -17,12 +16,12 @@ export const Layout = ({ children }: PropsWithChildren) => {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main>
-        <Hero />
-        <div className={classes.layout}>
-          {children}
-          <Footer />
+      <main className="min-h-screen top-0 px-8 py-7 mx-auto relative max-w-[800px] flex flex-col justify-between">
+        <div>
+          <Hero />
+          <div>{children}</div>
         </div>
+        <Footer />
       </main>
     </>
   );

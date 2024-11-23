@@ -1,9 +1,8 @@
 import Link from "next/link";
-import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className="pt-4 border-t border-gray-200 flex gap-4 text-gray-500 text-sm">
       <Link href="https://github.com/tbguest" target="blank">
         github
       </Link>
