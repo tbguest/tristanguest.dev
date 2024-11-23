@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="pt-4 border-t border-gray-200 flex gap-4 text-gray-500 text-sm">
       <Link href="https://github.com/tbguest" target="blank">
@@ -15,5 +15,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

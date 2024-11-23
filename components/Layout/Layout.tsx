@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Hero from "../Hero/Hero";
-import Footer from "../Footer/Footer";
 import { PropsWithChildren } from "react";
+import { Footer } from "../Footer";
 
 export const Layout = ({ children }: PropsWithChildren) => {
   return (
@@ -17,10 +16,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="min-h-screen top-0 px-8 py-7 mx-auto relative max-w-[800px] flex flex-col justify-between">
-        <div>
-          <Hero />
-          <div>{children}</div>
-        </div>
+        <div>{children}</div>
         <Footer />
       </main>
     </>
