@@ -1,0 +1,8 @@
+{
+  "width": 256,
+  "height": 256,
+  "uMin": -5,
+  "uMax": 5,
+  "vMin": -5,
+  "vMax": 5
+}

@@ -1,13 +1,9 @@
 import Image from "next/image";
-import { Card } from "../Card/Card";
 import { TbExternalLink } from "react-icons/tb";
-import classes from "./ProjectCard.module.css";
 import Link from "next/link";
-import { Project } from "../../pages/projects";
-import { Space_Grotesk } from "next/font/google";
+import { Project } from "../../pages/portfolio";
 import classNames from "classnames";
-
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+import { spaceGrotesk } from "../../fonts";
 
 type Props = {
   data: Project;
@@ -15,43 +11,54 @@ type Props = {
 
 export const ProjectCard = ({ data }: Props) => {
   return (
-    <div style={{ maxWidth: 600, alignSelf: "center" }}>
-      <Card style={{ padding: 0 }}>
-        <div className={classes.image_wrapper}>
-          <Image
-            src={data.image.url}
-            alt={data.image.alt}
-            layout="fill"
-            className={classes.image}
-          />
-        </div>
-        <div className={classes.link_container}>
-          <Link
-            href={data.link.url}
-            passHref={true}
-            target="_blank"
-            className={classes.link}
+    <div className="relative rounded-lg flex flex-col shadow-lg">
+      <div className="relative w-full h-[200px]">
+        <Image
+          src={data.image.url}
+          alt={data.image.alt}
+          fill
+          className="object-cover rounded-tr-lg rounded-tl-lg"
+        />
+      </div>
+      <div className="absolute top-2 right-2 w-6 h-6">
+        <Link
+          href={data.link.url}
+          passHref={true}
+          target="_blank"
+          className="w-full h-full"
+        >
+          <TbExternalLink className="w-full h-full text-white bg-inherit opacity-80 drop-shadow-[0px_0px_3px_rgba(0,0,0,0.9)]" />
+        </Link>
+      </div>
+      <div className="p-4 flex flex-col gap-2">
+        <Link href={data.link.github} passHref={true} target="_blank">
+          <h2
+            className={classNames([
+              spaceGrotesk.className,
+              "my-3 font-semibold text-xl",
+            ])}
           >
-            <TbExternalLink className={classes.icon} />
-          </Link>
-        </div>
-        <div className={classes.content_wrapper}>
-          <Link href={data.link.github} passHref={true} target="_blank">
-            <h2 className={spaceGrotesk.className}>{data.title}</h2>
-          </Link>
-          <p>{data.description}</p>
-          <span className={classes.tags_wrapper}>
-            {data.tags.map((tag) => (
-              <small
-                className={classNames([classes.tag, spaceGrotesk.className])}
-                key={tag}
-              >
-                {tag}
-              </small>
-            ))}
-          </span>
-        </div>
-      </Card>
+            {data.title}
+          </h2>
+        </Link>
+        <p>{data.description}</p>
+        <span className="flex flex-wrap p-2">
+          {data.tags.map((tag, index) => (
+            <small
+              className={classNames([
+                "text-black flex items-center",
+                spaceGrotesk.className,
+              ])}
+              key={tag}
+            >
+              {index > 0 && (
+                <span className="w-1 h-1 bg-black rounded-full mx-2" />
+              )}
+              {tag}
+            </small>
+          ))}
+        </span>
+      </div>
     </div>
   );
 };
