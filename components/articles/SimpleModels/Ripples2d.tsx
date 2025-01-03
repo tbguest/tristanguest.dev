@@ -15,7 +15,11 @@ export default function Ripples2d() {
   return (
     <>
       <SegmentedControl
-        options={["windward", "all", "leeward"]}
+        options={[
+          { value: "windward", label: "leeward only" },
+          { value: "all", label: "all" },
+          { value: "leeward", label: "windward only" },
+        ]}
         value={transport}
         onChange={(value) => {
           setTransport(value as Transport);
@@ -25,7 +29,7 @@ export default function Ripples2d() {
         <img
           src={src}
           alt="Ripple formation animation"
-          className="w-full shadow-lg my-4 max-w-[400px]"
+          className="w-full shadow-lg max-w-[400px]"
         />
       </div>
     </>

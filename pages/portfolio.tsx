@@ -248,7 +248,7 @@ export default function PortfolioPage() {
               </li>
               <li>
                 <Link href="/cv" target="_blank" className="text-anchor">
-                  CV
+                  CV (academic)
                 </Link>
               </li>
             </ul>

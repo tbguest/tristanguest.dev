@@ -101,7 +101,7 @@ function getSlopes(idx: number, h: number[]) {
   return thetas;
 }
 
-export function evolve(h: number[]) {
+export function evolve(h: number[], L: number = 15) {
   // # pick an index at random
   //   const x = new Array(LATTICE_X).fill(0);
   let ix = Math.round((LATTICE_X - 1) * Math.random());
