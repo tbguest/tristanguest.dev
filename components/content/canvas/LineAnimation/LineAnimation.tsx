@@ -24,6 +24,7 @@ export function LineAnimation({
     iterator,
     latticeSize,
     opts,
+    skip: 3000,
   });
 
   const canvasProps = canvasSize ?? {

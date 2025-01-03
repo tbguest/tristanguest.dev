@@ -9,7 +9,7 @@ export default function Dunes1dStack() {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-2 lg:gap-8">
+      <div className="flex flex-col lg:flex-row lg:justify-end gap-2 lg:gap-8">
         <Slider
           label="wind speed"
           value={windspeed}

@@ -2,6 +2,7 @@ import { DrawOptions } from "../../hooks/content/use-animate-line";
 
 export function drawLine({
   context,
+  bufferCanvas,
   data,
   width,
   height,
@@ -10,6 +11,7 @@ export function drawLine({
   opts,
 }: {
   context: CanvasRenderingContext2D;
+  bufferCanvas?: HTMLCanvasElement | null;
   data: number[];
   width: number;
   height: number;
@@ -19,6 +21,7 @@ export function drawLine({
 }) {
   // Draw stuff here
   context.clearRect(0, 0, width, height);
+  bufferCanvas && context.drawImage(bufferCanvas, 0, 0);
 
   const path = new Path2D();
   const x0 = xScale * 0;
