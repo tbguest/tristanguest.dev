@@ -17,15 +17,14 @@ import Ripples2d from "./Ripples2d";
 import { NX } from "../../../utils/ripple1d/constants";
 import { initialize as initializeRipple } from "../../../utils/ripple1d/model";
 import { LineStatic } from "../../content/canvas/LineStatic";
+import Dunes1d from "./Dunes1d";
+import Dunes1dStack from "./Dunes1dStack";
 
 export default function SimpleModels() {
   const router = useRouter();
 
   return (
-    <ContentLayout
-      title="Simple Models"
-      subtitle="Recreating complex physical phenomena with simple models"
-    >
+    <ContentLayout title="Simple Models">
       <article className="flex flex-col gap-14">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
@@ -153,11 +152,10 @@ export default function SimpleModels() {
           <p>
             There's a second mode of transport that we need to include in our
             simple model. In reality, sandy slopes can only get so steep before
-            grains cascade from the top down-slope to a more stable position. We
-            can implement this in our model by averaging the height of the sand
-            at the landing cell of the "jump" with each of the nearest
-            neighbouring cells - a "diffusion" step that keeps the sandy bed
-            more smooth.
+            grains cascade down-slope to a more stable position. We can
+            implement this in our model by averaging the height of the sand at
+            each grid cell with each of its nearest neighbouring cells - a
+            "diffusion" step that keeps the sandy bed more smooth.
           </p>
 
           <p>
@@ -201,7 +199,7 @@ export default function SimpleModels() {
           <p>
             It's a bit easier to see the ripples as cohesive structures if we
             can look at the time history. Here's a stacked view to help with
-            that:
+            that.
           </p>
           {/* Stacked animation */}
           <Ripples1dStack />
@@ -216,36 +214,22 @@ export default function SimpleModels() {
           <Ripples2d />
 
           <p>
-            It turns out that this model can be formalized mathematically in
-            such a way that we can learn about its behaviour and stability.
-          </p>
-
-          <p>
-            The rippled pattern emerges spontaneously though instability that
-            coincides with a critical "wind" stress.
-          </p>
-
-          <p>
-            The "jump" step and the diffusion step represent reaction and
-            diffusion in a classic reaction-diffusion system of equations which
-            can be examined analytically to explore the sort of instabilities
-            that lead to things like the formation of a ripple pattern.
-          </p>
-
-          <p>[equation]</p>
-
-          <p>
-            Saltation is a "nonlinear" reaction step, and surface creep is a
-            diffusion step, such that the system behaves like a
-            reaction-diffusion .. which are well-studied. Damped-driven systems
-            often exhibit chaotic behaviour. In this case, an instability
-            leading to ripple formation coincides with a critical wind stress.
-          </p>
-
-          <p>
             This is a "coupled map-lattice" model. The grid cells are discrete
             in space, but the values on the grid (the sand slabs) are allowed to
             vary continuously.
+          </p>
+
+          <p>
+            It turns out that this model can be formalized mathematically in
+            such a way that we can learn about its behaviour and stability
+            analytically.
+          </p>
+
+          <p>
+            The "jump" and "diffusion" steps are analogous to the terms in a
+            reaction-diffusion system. In our case, the rippled pattern emerges
+            spontaneously though instability that coincides with a critical
+            "wind" stress.
           </p>
         </div>
 
@@ -260,7 +244,7 @@ export default function SimpleModels() {
                 "group flex items-center gap-2",
               ])}
             >
-              Dunes
+              Sand dunes cellular automaton
               <a
                 href="#dunes"
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
@@ -275,15 +259,88 @@ export default function SimpleModels() {
             <em className="text-gray-500 mb-6">Inspired by Werner (1995)</em>
           </div>
 
-          <p>A cellular automaton approach to sand dune evolution in 1-d.</p>
-
           <p>
-            {`Discrete "slabs" on a lattice self-organize into dune-like structures forced by "wind". The erosion and deposition of slabs are stochastically controlled, with additional contstraints from simulated "avalanching" and no-transport "shadow-zones".`}
+            We can use some of the same ideas from the ripple model above to
+            think about the formation and evolution of sand dunes.
           </p>
 
-          <LineAnimation
+          <p>
+            Again, we'll represent the sand as "slabs" on a grid rather than
+            considering individual grains, and the slabs will be moved from one
+            grid cell to another by a steady wind stress.
+          </p>
+
+          <p>
+            We'll randomize the intitial bed state, again in 1-d, only this
+            time, we won't allow a negative number of slabs at any grid cell.
+            The motivation here is to simulate a layer beneath the sand that
+            can't be eroded. Think of this as a "bedrock" layer. To initialize
+            the model, we'll randomly position a set amount of sand "slabs" on
+            the grid. This time we'll use a 1000-cell grid.
+          </p>
+
+          {/* Draw an initial profile */}
+          <LineStatic
             initialState={initializeDune()}
-            iterator={evolveDune}
+            latticeSize={LATTICE_X}
+            opts={{ yScale: 0.5, yOrigin: 50 }}
+            canvasSize={{
+              width: 600,
+              height: 100,
+            }}
+          />
+
+          <p>
+            We're going to use a different set of transport conditions that make
+            more sense for the larger scale of sand dunes, and take into account
+            the non-erodible "bedrock" layer.
+          </p>
+
+          <p>There are three elements that we'd like to capture:</p>
+          <ul className="flex flex-col gap-1 list-disc list-inside">
+            <li>
+              sand should have a higher probability of being deposited on sand
+              than on bedrock,
+            </li>
+            <li>
+              sand should not be transported if it's in the "shadow" of a dune
+              (out of the wind), and
+            </li>
+            <li>sand slopes shouldn't be unrealistically steep.</li>
+          </ul>
+
+          <p>
+            We can select grid cells at random, and move the top slab of sand
+            some distance downwind that's proportional to the windspeed. We'll
+            assign probabilities of deposition to each type of substrate: a
+            higher probability for sand and a lower probability for bedrock. If
+            the grain doesn't get deposited, we'll move it downwind again, check
+            for deposition, and so on until it gets deposited.
+          </p>
+
+          <p>
+            To make sure slabs in the "shadows" of dunes aren't transported,
+            we'll check each selected cell before initiating transport to ensure
+            there are no slabs upwind that are more than some angle above the
+            selected cell (I used 15°). If there are, the slab doesn't get
+            transported.
+          </p>
+
+          <p>
+            Finally, we'll add an "avalanching" step. After each instance of
+            erosion or deposition, we'll check to make sure no slopes have
+            exceeded our sand slope threshold (30°). If the angle threshold is
+            exceeded, the topmost slab is moved down the steepest neighbouring
+            slope until it reaches a stable position.
+          </p>
+
+          <p>Here's the model in action:</p>
+
+          <Dunes1d />
+
+          {/* <LineAnimation
+            initialState={initializeDune()}
+            iterator={(h) => evolveDune(h, L)}
             latticeSize={LATTICE_X}
             opts={{
               yScale: 0.5,
@@ -293,19 +350,31 @@ export default function SimpleModels() {
               width: 600,
               height: 100,
             }}
-          />
+          /> */}
 
-          <StackAnimation
-            initialState={initializeDune()}
-            iterator={evolveDune}
-            latticeSize={LATTICE_X}
-            skip={3 * LATTICE_X}
-            stackOffset={-3}
-            opts={{
-              yScale: 0.5,
-              yOrigin: 290,
-            }}
-          />
+          <p>
+            Again, it's helpful to have some time history for context, so here's
+            the same model with steps stacked through time.
+          </p>
+
+          <Dunes1dStack />
+
+          <p>
+            The model does a neat job of capturing some dune-like features. The
+            sand slabs quickly self-organize into dune-shaped features that
+            travel downwind, smaller features travel faster than larger ones,
+            and eventually most small features on the grid merge into larger,
+            slower-moving ones.
+          </p>
+
+          <p>
+            Of course, there are some ways we could try to make the model
+            better. Real dunes are usually steeper on the downwind side. And
+            what about different substrate types? Should we restrict the dunes'
+            height in some way?
+          </p>
+
+          <p>I'll leave that for another time.</p>
         </div>
       </article>
     </ContentLayout>

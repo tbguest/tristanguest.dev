@@ -1,7 +1,10 @@
 import React from "react";
 
 interface SegmentedControlProps {
-  options: string[];
+  options: Array<{
+    label: string;
+    value: string;
+  }>;
   value: string;
   onChange: (value: string) => void;
 }
@@ -16,8 +19,8 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
       <div className="inline-flex rounded-lg border border-gray-200 p-1 bg-gray-100">
         {options.map((option) => (
           <button
-            key={option}
-            onClick={() => onChange(option)}
+            key={option.value}
+            onClick={() => onChange(option.value)}
             className={`
             px-4 py-2 
             rounded-md
@@ -27,13 +30,13 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
             duration-200
             drop-shadow-sm
             ${
-              option === value
+              option.value === value
                 ? "bg-white text-black shadow-md"
                 : "text-gray-700 hover:text-black"
             }
             `}
           >
-            {option}
+            {option.label}
           </button>
         ))}
       </div>

@@ -17,7 +17,11 @@ export default function Ripples1dStack() {
     <>
       <div className="flex flex-col lg:flex-row lg:justify-between gap-2 lg:gap-8">
         <SegmentedControl
-          options={["windward", "all", "leeward"]}
+          options={[
+            { value: "windward", label: "leeward only" },
+            { value: "all", label: "all" },
+            { value: "leeward", label: "windward only" },
+          ]}
           value={transport}
           onChange={(value) => {
             setTransport(value as Transport);
