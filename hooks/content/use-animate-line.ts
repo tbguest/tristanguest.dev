@@ -37,7 +37,7 @@ export function useAnimateLine({
   const height = screenCanvas?.height || 1;
   const xScale = width ? width / initialState.length : 1;
 
-  dataRef.current = { ...initialState };
+  dataRef.current = initialState;
 
   // So it runs whenever the page remounts
   useEffect(() => {

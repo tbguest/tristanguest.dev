@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { drawLine } from "../../utils/animate/draw-line";
 
 export type DrawOptions = {
   yScale: number;
@@ -27,7 +28,6 @@ export function useAnimateStack({
   const [isCanvas, setIsCanvas] = useState(false);
   const nowRef = useRef(Date.now());
   const thenRef = useRef(Date.now());
-  // const startRef = useRef(Date.now());
   const elapsedRef = useRef(0);
   const dataRef = useRef(initialState);
 
@@ -65,29 +65,16 @@ export function useAnimateStack({
           // Also, adjust for fpsInterval not being multiple of 16.67
           thenRef.current = nowRef.current - (elapsedRef.current % fpsInterval);
 
-          // Draw stuff here
-          screenContext.clearRect(0, 0, width, height);
-          bufferCanvas && screenContext.drawImage(bufferCanvas, 0, 0);
-
-          const path = new Path2D();
-          const x0 = xScale * 0;
-
-          // // TESTING...Report seconds since start and achieved fps.
-          // const sinceStart = nowRef.current - startRef.current;
-          // const currentFps =
-          //   Math.round((1000 / (sinceStart / ++frameCount)) * 100) / 100;
-          // console.log(currentFps);
-
-          // Negative since the canvas (0,0) is upper left
-          const h0 = -opts.yScale * dataRef.current[0] + opts.yOrigin;
-          path.moveTo(x0, h0);
-          for (let i = 1; i < latticeSize; i += 1) {
-            const xn = xScale * i;
-            const yn = -opts.yScale * dataRef.current[i] + opts.yOrigin;
-            path.lineTo(xn, yn);
-          }
-          screenContext.lineWidth = 1;
-          screenContext.stroke(path);
+          drawLine({
+            context: screenContext,
+            bufferCanvas,
+            data: dataRef.current,
+            width,
+            height,
+            xScale,
+            latticeSize,
+            opts,
+          });
 
           // Draw the contents of the screenCanvas on the bufferCanvas, with an offset
           bufferContext.clearRect(0, 0, width, height);
