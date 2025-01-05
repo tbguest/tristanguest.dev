@@ -1,6 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "SF Pro";
+    src: url("/fonts/SF-Pro.ttf") format("truetype");
+    font-style: normal;
+  }
+}
+
 :root {
-  --content-max-width: 54rem;
-  --title-font-size: 2.3rem;
+  --content-max-width: 800px;
+  --title-font-size: 1.8rem;
   --body-font-size: 1rem;
   --gutter: 2rem;
   --border-radius: 8px;
@@ -13,45 +25,4 @@
   --color-font-accent: #181818;
   --drop-shadow: rgb(204, 204, 204);
   --gutter: 32px;
-}
-
-[data-theme="dark"] {
-  --color-primary: #ffffff;
-  --color-background: #181818;
-  --color-background-accent: #131313;
-  --color-primary-accent: #9d86e9;
-  --color-secondary-accent: #61dafb;
-  --color-font-accent: #b1b1b1;
-  --drop-shadow: var(--color-background-accent);
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: var(--color-background);
-  color: var(--color-primary);
-  line-height: 1.5;
-  transition: background-color 0.4s;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--link-color);
-  background: var(--color-highlight);
-}
-
-h1 {
-  font-size: var(--title-font-size);
-  font-weight: 900;
-}
-
-* {
-  box-sizing: border-box;
 }

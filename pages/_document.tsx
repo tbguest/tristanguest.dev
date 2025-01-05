@@ -1,5 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+import { Head, Html, Main, NextScript } from "next/document";
 import { config } from "../meta.config";
 
 export default function Document() {
@@ -9,7 +8,6 @@ export default function Document() {
         <meta name="application-name" content={config.appName} />
         <meta name="theme-color" content={config.themeColor} />
 
-        {/* <meta name="twitter:card" content="summary_large_image" key="twcard" /> */}
         <meta name="twitter:card" content="summary" key="twcard" />
         <meta name="twitter:url" content={config.domain} />
         <meta name="twitter:title" content={config.appShortName} />
@@ -47,49 +45,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script id="setcolormode" strategy="beforeInteractive">
-          {blockingSetInitialColorMode}
-        </Script>
       </body>
     </Html>
   );
-}
-
-// function needs to be a string
-const blockingSetInitialColorMode = `(function() {
-	${setInitialColorMode.toString()}
-	setInitialColorMode();
-})()
-`;
-
-function setInitialColorMode() {
-  function getInitialColorMode() {
-    const persistedColorPreference = window.localStorage.getItem("theme");
-    const hasPersistedPreference = typeof persistedColorPreference === "string";
-
-    // If the user has explicitly chosen light or dark,
-    // use it. Otherwise null.
-    if (hasPersistedPreference) {
-      return persistedColorPreference;
-    }
-
-    // If there is no saved preference, use a media query
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    const hasMediaQueryPreference = typeof mql.matches === "boolean";
-
-    if (hasMediaQueryPreference) {
-      return mql.matches ? "dark" : "light";
-    }
-
-    // default to 'dark'.
-    return "dark";
-  }
-
-  const colorMode = getInitialColorMode();
-  const root = document.documentElement;
-  root.style.setProperty("--initial-color-mode", colorMode);
-
-  // add HTML attribute if dark mode
-  if (colorMode === "dark")
-    document.documentElement.setAttribute("data-theme", "dark");
 }
