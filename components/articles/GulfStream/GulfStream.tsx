@@ -30,12 +30,16 @@ export default function GulfStream() {
             ref={screenCanvasRef}
           ></canvas>
         </div>
-        <button onClick={() => setModel("gulfStream")}>Gulf Stream</button>
+        <p>
+          I'm working on this - come back another day. In the mean time, get in
+          touch if this is interesting to you :)
+        </p>
+        {/* <button onClick={() => setModel("gulfStream")}>Gulf Stream</button>
         <button onClick={() => setModel("stommel")}>Stommel</button>
         <button onClick={() => setModel("stommelBeta")}>
           Stommel with variable f
         </button>
-        <button onClick={() => setModel("munk")}>Munk</button>
+        <button onClick={() => setModel("munk")}>Munk</button> */}
       </article>
     </ContentLayout>
   );
