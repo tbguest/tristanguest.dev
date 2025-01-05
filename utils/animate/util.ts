@@ -39,12 +39,14 @@ export function createProgram(
     const numAttributes = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES);
     for (let i = 0; i < numAttributes; i++) {
       const attribute = gl.getActiveAttrib(program, i);
+      // @ts-ignore
       wrapper[attribute.name] =
         attribute && gl.getAttribLocation(program, attribute.name);
     }
     const numUniforms = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
     for (let i = 0; i < numUniforms; i++) {
       const uniform = gl.getActiveUniform(program, i);
+      // @ts-ignore
       wrapper[uniform.name] =
         uniform && gl.getUniformLocation(program, uniform.name);
     }

@@ -147,6 +147,7 @@ export const drawScreen = (
     drawTexture(gl, backgroundTexture, fadeOpacity, screenProgram, quadBuffer);
   drawParticles(
     gl,
+    // @ts-ignore
     drawProgram,
     particleIndexBuffer,
     particleStateResolution,
@@ -160,6 +161,7 @@ export const drawScreen = (
   // enable blending to support drawing on top of an existing background (e.g. a map)
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  // @ts-ignore
   drawTexture(gl, screenTexture, 1.0, screenProgram, quadBuffer);
   gl.disable(gl.BLEND);
 
@@ -183,7 +185,9 @@ const drawTexture = (
 
   bindAttribute(gl, quadBuffer, program.a_pos, 2);
   bindTexture(gl, texture, 2);
+  // @ts-ignore
   gl.uniform1i(program.u_screen, 2);
+  // @ts-ignore
   gl.uniform1f(program.u_opacity, opacity);
 
   gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -203,13 +207,20 @@ const drawParticles = (
   bindAttribute(gl, particleIndexBuffer, program.a_index, 1);
   bindTexture(gl, colorRampTexture, 2);
 
+  // @ts-ignore
   gl.uniform1i(program.u_wind, 0);
+  // @ts-ignore
   gl.uniform1i(program.u_particles, 1);
+  // @ts-ignore
   gl.uniform1i(program.u_color_ramp, 2);
 
+  // @ts-ignore
   gl.uniform1f(program.u_particles_res, particleStateResolution);
+  // @ts-ignore
   gl.uniform2f(program.u_wind_min, windData.uMin, windData.vMin);
+  // @ts-ignore
   gl.uniform2f(program.u_wind_max, windData.uMax, windData.vMax);
+  // @ts-ignore
   gl.uniform2f(program.u_wind_res, windData.width, windData.height);
 
   gl.drawArrays(gl.POINTS, 0, numParticles);
@@ -236,15 +247,24 @@ export const updateParticles = (
 
     bindAttribute(gl, quadBuffer, program.a_pos, 2);
 
+    // @ts-ignore
     gl.uniform1i(program.u_wind, 0);
+    // @ts-ignore
     gl.uniform1i(program.u_particles, 1);
 
+    // @ts-ignore
     gl.uniform1f(program.u_rand_seed, Math.random());
+    // @ts-ignore
     gl.uniform2f(program.u_wind_res, windData.width, windData.height);
+    // @ts-ignore
     gl.uniform2f(program.u_wind_min, windData.uMin, windData.vMin);
+    // @ts-ignore
     gl.uniform2f(program.u_wind_max, windData.uMax, windData.vMax);
+    // @ts-ignore
     gl.uniform1f(program.u_speed_factor, speedFactor);
+    // @ts-ignore
     gl.uniform1f(program.u_drop_rate, dropRate);
+    // @ts-ignore
     gl.uniform1f(program.u_drop_rate_bump, dropRateBump);
   }
 

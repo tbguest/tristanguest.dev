@@ -154,8 +154,8 @@ export const useParticleAnimation = (
         16
       );
 
-      let backgroundTexture = resizedBackgroundTexture;
-      let screenTexture = resizedScreenTexture;
+      let backgroundTexture: WebGLTexture | null = resizedBackgroundTexture;
+      let screenTexture: WebGLTexture | null = resizedScreenTexture;
 
       const draw = () => {
         screenContext.disable(screenContext.DEPTH_TEST);
