@@ -1,5 +1,5 @@
-import { allRoots } from "flo-poly";
-import { polynomialRoot } from "mathjs";
+// import { allRoots } from "flo-poly";
+// import { polynomialRoot } from "mathjs";
 
 export const moore = () => {
   // Parameters
@@ -62,7 +62,8 @@ export const moore = () => {
     const coefficients = [nu, -U[j], 0, beta];
     // const lambda = allRoots(coefficients);
     // const lambda = allRoots(coefficients).reverse();
-    const lambda = polynomialRoot(beta, 0, -U[j], nu);
+    // const lambda = polynomialRoot(beta, 0, -U[j], nu);
+    const lambda = [1, 2, 3]; // TODO: remove. This is just for TS
 
     let lambda1 = 0;
     let lambda2 = 0;
