@@ -65,7 +65,7 @@ export default function SimpleModels() {
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
                 onClick={(e) => {
                   e.preventDefault();
-                  router.push("#ripples", undefined, { shallow: true });
+                  void router.push("#ripples", undefined, { shallow: true });
                 }}
               >
                 <FiLink size={20} className="hover:text-gray-500" />
@@ -246,7 +246,7 @@ export default function SimpleModels() {
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
                 onClick={(e) => {
                   e.preventDefault();
-                  router.push("#dunes", undefined, { shallow: true });
+                  void router.push("#dunes", undefined, { shallow: true });
                 }}
               >
                 <FiLink size={20} className="hover:text-gray-500" />
