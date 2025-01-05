@@ -4,8 +4,6 @@ import { evolve, initialize } from "../../../utils/dune1d/model";
 import { LineAnimation } from "../../content/canvas/LineAnimation";
 import { Slider } from "../../ui/Slider";
 
-export type Transport = "windward" | "all" | "leeward";
-
 export default function Dunes1d() {
   const [windspeed, setWindspeed] = useState<number>(15);
 
@@ -28,6 +26,7 @@ export default function Dunes1d() {
           yScale: 0.5,
           yOrigin: 50,
         }}
+        skip={3000}
         canvasSize={{
           width: 600,
           height: 100,

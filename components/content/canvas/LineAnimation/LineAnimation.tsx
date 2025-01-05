@@ -6,6 +6,7 @@ interface Props {
   iterator: (state: number[]) => { h: number[] };
   latticeSize: number;
   opts: { yScale: number; yOrigin: number };
+  skip?: number;
   canvasSize?: { width: number; height: number };
 }
 
@@ -14,6 +15,7 @@ export function LineAnimation({
   iterator,
   latticeSize,
   opts,
+  skip = 1,
   canvasSize,
 }: Props) {
   const screenCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -24,7 +26,7 @@ export function LineAnimation({
     iterator,
     latticeSize,
     opts,
-    skip: 3000,
+    skip,
   });
 
   const canvasProps = canvasSize ?? {

@@ -16,7 +16,7 @@ export default function GulfStream() {
       subtitle="Fun with geophysical fluid dynamics (and your GPU)"
     >
       <article className="flex flex-col gap-8">
-        <div className="flex relative items-center justify-center px-20 py-5">
+        <div className="flex relative items-center justify-center px-5 md:px-20 py-5">
           <canvas
             width="600"
             height="400"
