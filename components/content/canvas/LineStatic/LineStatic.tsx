@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { useDrawLine } from "../../../../hooks/content/use-draw-line";
-import { drawLine } from "../../../../utils/animate/draw-line";
 
 interface Props {
   initialState: number[];

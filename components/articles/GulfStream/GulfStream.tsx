@@ -5,7 +5,7 @@ import { useParticleAnimation } from "../../../hooks/content/use-particle-animat
 export type GyreModel = "gulfStream" | "stommel" | "stommelBeta" | "munk";
 
 export default function GulfStream() {
-  const [model, setModel] = useState<GyreModel>("gulfStream");
+  const [model] = useState<GyreModel>("gulfStream");
   const screenCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useParticleAnimation(model as GyreModel, screenCanvasRef.current);
@@ -31,8 +31,8 @@ export default function GulfStream() {
           ></canvas>
         </div>
         <p>
-          I'm working on this - come back another day. In the mean time, get in
-          touch if this is interesting to you :)
+          {`I'm working on this - come back another day. In the mean time, get in
+          touch if this is interesting to you :)`}
         </p>
         {/* <button onClick={() => setModel("gulfStream")}>Gulf Stream</button>
         <button onClick={() => setModel("stommel")}>Stommel</button>

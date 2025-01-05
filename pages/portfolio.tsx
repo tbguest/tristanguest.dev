@@ -89,20 +89,20 @@ export default function PortfolioPage() {
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <p>
-              Hi, I'm Tristan. I build web software, front end and back end. I
+              {`Hi, I'm Tristan. I build web software, front end and back end. I
               do most of my work with TypeScript, Node.js, and React. For
-              heavier data needs, I use Python.
+              heavier data needs, I use Python.`}
             </p>
 
             <p>
-              I have degrees in mathematics (BSc) and oceanography (PhD),
+              {`I have degrees in mathematics (BSc) and oceanography (PhD),
               specializing in coastal ocean physics and beach dynamics. I still
               love thinking about data, but now I spend most of my time building
-              web solutions for startups.
+              web solutions for startups.`}
             </p>
 
             <p>
-              Since 2023, I've been working as a contract software engineer via{" "}
+              {`Since 2023, I've been working as a contract software engineer via `}
               <Link
                 href="https://www.fineday.tech/"
                 target="_blank"
@@ -110,7 +110,7 @@ export default function PortfolioPage() {
               >
                 Fine Day Technologies
               </Link>
-              , my contracting and consulting company.
+              {`, my contracting and consulting company.`}
             </p>
 
             <ul className="flex flex-col gap-1 list-disc list-inside">
@@ -151,18 +151,18 @@ export default function PortfolioPage() {
             </h2>
             <ul className="flex flex-col gap-1 list-disc list-inside">
               <li>
-                "Breaking Into Tech" (and Being Entrepreneurial) (2024) - I was
-                invited to present to the 2024 cohort of students in the{" "}
+                {`"Breaking Into Tech" (and Being Entrepreneurial) (2024) - I was
+                invited to present to the 2024 cohort of students in the `}
                 <Link
                   href="https://www.onenorthend.com/the-matrix-code"
                   target="_blank"
                   className="text-anchor"
                 >
                   Matrix Code
-                </Link>{" "}
-                program at Dalhousie University. The Matrix Code is a full-stack
+                </Link>
+                {` program at Dalhousie University. The Matrix Code is a full-stack
                 software development program for African Nova Scotian students
-                and students of colour.
+                and students of colour.`}
               </li>
               <li>
                 <Link
@@ -171,9 +171,9 @@ export default function PortfolioPage() {
                   className="text-anchor"
                 >
                   Client Side Data Fetching with SWR
-                </Link>{" "}
-                (2022) - I presented at a local front-end development meetup in
-                Halifax organized by{" "}
+                </Link>
+                {` (2022) - I presented at a local front-end development meetup in
+                Halifax organized by `}
                 <Link
                   href="https://www.meetup.com/halifax-reactjs-meetup/"
                   target="_blank"
