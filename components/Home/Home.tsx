@@ -18,8 +18,7 @@ const content = [
     id: "2",
     href: "/content/gulf-stream",
     title: "Why is there a Gulf Stream?",
-    intro:
-      "Exploring the reasons for western intensification in ocean gyre circulation using first principles and WebGL",
+    intro: "Fun with geophysical fluid dynamics (and your GPU)",
   },
   // {
   //   id: "3",

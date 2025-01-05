@@ -21,6 +21,7 @@ const projects = [
       "Prisma",
       "Planetscale",
       "MySQL",
+      "LLMs",
     ],
     link: {
       url: "https://biggerpicture.co/",
@@ -109,24 +110,15 @@ export default function PortfolioPage() {
               >
                 Fine Day Technologies
               </Link>
-              , my software development contracting and consulting company.
+              , my contracting and consulting company.
             </p>
 
             <ul className="flex flex-col gap-1 list-disc list-inside">
               <li className="">
                 <Link href="/resume" target="_blank" className="text-anchor">
                   Resume
-                </Link>{" "}
-                - My current statement of skills and experience as a full-stack
-                software developer.
+                </Link>
               </li>
-              {/* <li>
-                <Link href="/resume" target="_blank" className="text-anchor">
-                  CV
-                </Link>{" "}
-                - I'm no longer closely involved with academia, but I keep this
-                up-to-date
-              </li> */}
             </ul>
           </div>
 

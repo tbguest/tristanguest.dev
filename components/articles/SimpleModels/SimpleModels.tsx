@@ -319,10 +319,11 @@ export default function SimpleModels() {
           </p>
 
           <p>
-            To make sure slabs in the "shadows" of dunes aren't transported,
-            we'll check each selected cell before initiating transport to ensure
-            there are no slabs upwind that are more than some angle above the
-            selected cell (I used 15°). If there are, the slab doesn't get
+            To prevent transport of sand that's sheltered from the wind, we
+            check if the selected cell is in the "shadow" of an upwind dune. We
+            do this by drawing an imaginary line of some angle (I used 15°) from
+            the selected cell upwind. If any upwind slabs rise above this line,
+            the slab at the selected cell is considered sheltered and won't be
             transported.
           </p>
 
@@ -338,20 +339,6 @@ export default function SimpleModels() {
 
           <Dunes1d />
 
-          {/* <LineAnimation
-            initialState={initializeDune()}
-            iterator={(h) => evolveDune(h, L)}
-            latticeSize={LATTICE_X}
-            opts={{
-              yScale: 0.5,
-              yOrigin: 50,
-            }}
-            canvasSize={{
-              width: 600,
-              height: 100,
-            }}
-          /> */}
-
           <p>
             Again, it's helpful to have some time history for context, so here's
             the same model with steps stacked through time.
@@ -362,7 +349,7 @@ export default function SimpleModels() {
           <p>
             The model does a neat job of capturing some dune-like features. The
             sand slabs quickly self-organize into dune-shaped features that
-            travel downwind, smaller features travel faster than larger ones,
+            travel downwind. Smaller features travel faster than larger ones,
             and eventually most small features on the grid merge into larger,
             slower-moving ones.
           </p>
