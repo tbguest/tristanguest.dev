@@ -43,7 +43,7 @@ const content = [
 export function Home() {
   return (
     <Layout>
-      <div className="flex flex-row items-center gap-8">
+      <div className="flex flex-row items-center gap-8 lg:mt-6 xl:mt-8 2xl:mt-12">
         <div className="flex flex-col">
           <Image
             src={profile}
@@ -64,7 +64,7 @@ export function Home() {
               Tristan Guest
             </h1>
             <p className={"mb-4"}>
-              {`I’m a full-stack web developer, data scientist, and builder. I like connecting with people.`}
+              {`I'm a full-stack web developer, data scientist, and builder. I like connecting with people.`}
             </p>
             <Link
               href="/portfolio"
