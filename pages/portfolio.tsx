@@ -33,7 +33,7 @@ const projects = [
     description:
       "Freewheeling Adventures is a global leader in adventure travel, offering high calibre cycling and walking tours in destinations around the world. With nearly 40 years of operation, they have built a reputation for delivering exceptional experiences and fostering lasting connections with their clients. I'm working with Freewheeling to modernize their operational software and migrate their legacy MS Access database to a modern MySQL database.",
     image: {
-      url: "/assets/projects-freewheeling.png",
+      url: "/assets/projects-freewheeling.jpg",
       alt: "Thumbnail view of a tourism webpage showing a colorful and dynamic landscape",
     },
     tags: ["MySQL", "TypeScript", "React.js", "MS Access"],
