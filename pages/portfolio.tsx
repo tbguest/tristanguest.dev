@@ -29,6 +29,19 @@ const projects = [
     },
   },
   {
+    title: "Freewheeling Adventures",
+    description:
+      "Freewheeling Adventures is a global leader in adventure travel, offering high calibre cycling and walking tours in destinations around the world. With nearly 40 years of operation, they have built a reputation for delivering exceptional experiences and fostering lasting connections with their clients. I'm working with Freewheeling to modernize their operational software and migrate their legacy MS Access database to a modern MySQL database.",
+    image: {
+      url: "/assets/projects-freewheeling.png",
+      alt: "Thumbnail view of a tourism webpage showing a colorful and dynamic landscape",
+    },
+    tags: ["MySQL", "TypeScript", "React.js", "MS Access"],
+    link: {
+      url: "https://www.freewheeling.ca",
+    },
+  },
+  {
     title: "LunaOcean Data Platform",
     description:
       "LunaOcean consolidates real-time and forecasted wind, wave, and ocean current data in a modern map interface. I worked on this project from inception, building with TypeScript, Next.js, and a serverless backend leveraging AWS Lambda and MongoDB. The WebGL-based particle animation for visualizing currents was a particularly interesting challenge.",
@@ -40,42 +53,6 @@ const projects = [
     link: {
       url: "https://lunaocean.app/",
       github: "https://lunaocean.app/",
-    },
-  },
-  {
-    title: "Instability I/O",
-    description:
-      "A gallery and playground for visualizing output from process-based models on an HTML canvas. All of the animations are procedurally generated with client-side JavaScript. Vite for module bundling. No JS frameworks.",
-    image: {
-      url: "/assets/projects-instability-io.png",
-      alt: "Thumbnail view of a page showing black and white line art",
-    },
-    tags: ["HTML", "CSS", "TypeScript", "HTML Canvas", "Vite"],
-    link: {
-      url: "https://www.instability.io/",
-      github: "https://github.com/tbguest/instability-io/",
-    },
-  },
-  {
-    title: "Repo Metrics",
-    description:
-      "A for-fun Next.js project for comparing GitHub repositories by interest and development effort metrics. Authenticated users can curate a custom list of repos, persisted in a MongoDB database. All asynchronous state is managed with useSWR.",
-    image: {
-      url: "/assets/projects-github.png",
-      alt: "Thumbnail view of a GitHub repo statistics project page",
-    },
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "SWR",
-      "MongoDB",
-      "Next-Auth",
-      "Chart.js",
-      "Tailwind CSS",
-    ],
-    link: {
-      url: "https://repo-metrics.vercel.app/",
-      github: "https://github.com/tbguest/repo-metrics/",
     },
   },
 ];
@@ -130,9 +107,9 @@ export default function PortfolioPage() {
                 "group flex items-center gap-2",
               ])}
             >
-              Clients & Projects
+              Recent Clients & Projects
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
+            <div className="flex flex-col gap-8">
               {projects.map((item) => (
                 <ProjectCard data={item} key={item.title} />
               ))}
