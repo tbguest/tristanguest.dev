@@ -90,13 +90,11 @@ export default function PortfolioPage() {
               {`, my contracting and consulting company.`}
             </p>
 
-            <ul className="flex flex-col gap-1 list-disc list-inside">
-              <li className="">
-                <Link href="/resume" target="_blank" className="text-anchor">
-                  Resume
-                </Link>
-              </li>
-            </ul>
+            <p>
+              <Link href="/resume" target="_blank" className="text-anchor">
+                Here's my resume.
+              </Link>
+            </p>
           </div>
 
           <div className="flex flex-col gap-2">

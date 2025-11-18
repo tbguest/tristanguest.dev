@@ -9,9 +9,6 @@ export const Footer = () => {
       <Link href="https://www.linkedin.com/in/tristanguest/" target="_blank">
         linkedin
       </Link>
-      <Link href="https://x.com/tristan_guest" target="_blank">
-        x
-      </Link>
     </footer>
   );
 };
