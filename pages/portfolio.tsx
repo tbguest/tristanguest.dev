@@ -4,11 +4,25 @@ import { ContentLayout } from "../components/layout/ContentLayout";
 import { ProjectCard } from "../components/ProjectCard/ProjectCard";
 import { spaceGrotesk } from "../fonts";
 
-const projects = [
+export type Project = {
+  title: string;
+  description: string;
+  image: {
+    url: string;
+    alt: string;
+  };
+  tags: string[];
+  link: {
+    url: string;
+    github?: string;
+  };
+};
+
+const projects: Project[] = [
   {
     title: "BiggerPicture",
     description:
-      "BiggerPicture is a SaaS solution for optimizing scheduling between shippers, transportation, and consignees, drastically reducing assessorial costs and delays. Backed by Y Combinator. I'm helping BiggerPicture develop their platform using React, Next.js, and full-stack TypeScript with tRPC.",
+      "Full-stack contract engineer on YC-backed BiggerPicture, a SaaS platform that optimizes scheduling between shippers, carriers, and consignees. Building across the stack with React, Next.js, TypeScript, and tRPC.",
     image: {
       url: "/assets/projects-biggerpicture.png",
       alt: "Thumbnail view of the BiggerPicture landing page",
@@ -25,13 +39,12 @@ const projects = [
     ],
     link: {
       url: "https://biggerpicture.co/",
-      github: "https://biggerpicture.co/",
     },
   },
   {
     title: "Freewheeling Adventures",
     description:
-      "Freewheeling Adventures is a global leader in adventure travel, offering high calibre cycling and walking tours in destinations around the world. With nearly 40 years of operation, they have built a reputation for delivering exceptional experiences and fostering lasting connections with their clients. I'm working with Freewheeling to modernize their operational software and migrate their legacy MS Access database to a modern MySQL database.",
+      "Contract engineer modernizing operational software for Freewheeling Adventures, a global adventure travel company with nearly 40 years in business. Migrating a legacy MS Access database to MySQL and rebuilding internal tools with TypeScript and React.",
     image: {
       url: "/assets/projects-freewheeling.jpg",
       alt: "Thumbnail view of a tourism webpage showing a colorful and dynamic landscape",
@@ -44,7 +57,7 @@ const projects = [
   {
     title: "LunaOcean Data Platform",
     description:
-      "LunaOcean consolidates real-time and forecasted wind, wave, and ocean current data in a modern map interface. I worked on this project from inception, building with TypeScript, Next.js, and a serverless backend leveraging AWS Lambda and MongoDB. The WebGL-based particle animation for visualizing currents was a particularly interesting challenge.",
+      "Full-stack engineer from project inception on LunaOcean, a platform consolidating real-time and forecasted wind, wave, and ocean current data. Worked on the Next.js front end, serverless AWS Lambda backend, and MongoDB data layer — including WebGL particle animations for current visualization.",
     image: {
       url: "/assets/projects-luna.png",
       alt: "Thumbnail view of the LunaOcean ocean weather app, built in part by the author",
@@ -52,16 +65,16 @@ const projects = [
     tags: ["TypeScript", "Next.js", "MapboxGL JS", "AWS", "MongoDB", "Python"],
     link: {
       url: "https://lunaocean.app/",
-      github: "https://lunaocean.app/",
     },
   },
 ];
 
-export type Project = (typeof projects)[0];
-
 export default function PortfolioPage() {
   return (
-    <ContentLayout title="Portfolio">
+    <ContentLayout
+      title="Portfolio"
+      description="Projects, conference talks, and background — full-stack developer working with YC-backed startup and ocean data platforms."
+    >
       <div>
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">

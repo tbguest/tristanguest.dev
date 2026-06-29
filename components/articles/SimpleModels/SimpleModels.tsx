@@ -19,7 +19,10 @@ export default function SimpleModels() {
   const router = useRouter();
 
   return (
-    <ContentLayout title="Simple Models">
+    <ContentLayout
+      title="Simple Models"
+      description="Interactive article exploring simple models of physical systems — dunes, ripples, and emergent phenomena."
+    >
       <article className="flex flex-col gap-14">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">

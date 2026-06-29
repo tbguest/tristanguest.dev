@@ -14,7 +14,7 @@ export default function Document() {
         <meta name="twitter:description" content={config.description} />
         <meta
           name="twitter:image"
-          content={`${config.domain}/assets/lunaOceans.png`}
+          content={`${config.domain}/assets/projects-luna.png`}
         />
         <meta
           name="twitter:creator"
@@ -38,7 +38,7 @@ export default function Document() {
         <meta property="og:url" content={config.domain} key="ogurl" />
         <meta
           property="og:image"
-          content={`${config.domain}/assets/tristan.png`}
+          content={`${config.domain}/assets/projects-tristanguest.png`}
           key="ogimage"
         />
       </Head>

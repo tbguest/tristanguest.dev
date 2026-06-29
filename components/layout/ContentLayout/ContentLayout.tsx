@@ -8,12 +8,14 @@ import { Breadcrumb } from "../../ui/Breadcrumb";
 interface Props {
   title: string;
   subtitle?: string;
+  description?: string;
 }
 
 export function ContentLayout({
   children,
   title,
   subtitle,
+  description,
 }: PropsWithChildren & Props) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
@@ -25,7 +27,10 @@ export function ContentLayout({
   ];
 
   return (
-    <Layout>
+    <Layout
+      title={`${title} — Tristan Guest`}
+      description={description ?? subtitle}
+    >
       <section>
         <Breadcrumb items={breadcrumbItems} />
         <div className="flex flex-col gap-4">

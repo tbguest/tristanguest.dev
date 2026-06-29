@@ -1,22 +1,43 @@
 import Head from "next/head";
 import { PropsWithChildren } from "react";
 import { Footer } from "../../Footer";
+import { SiteNav } from "../SiteNav";
 
-export const Layout = ({ children }: PropsWithChildren) => {
+const SITE_NAME = "Tristan Guest";
+const DEFAULT_DESCRIPTION =
+  "I'm a software developer working on the Atlantic coast of Canada. I value simplicity and usability in software, and I like building with full-stack tools.";
+
+interface LayoutProps {
+  title?: string;
+  description?: string;
+}
+
+export const Layout = ({
+  children,
+  title,
+  description,
+}: PropsWithChildren<LayoutProps>) => {
+  const pageTitle = title ?? SITE_NAME;
+  const pageDescription = description ?? DEFAULT_DESCRIPTION;
+
   return (
     <>
       <Head>
-        <title>Tristan Guest</title>
-        <meta property="og:title" content={`Tristan Guest`} key="title" />
+        <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} key="title" />
+        <meta name="description" content={pageDescription} key="desc" />
         <meta
-          name="description"
-          content="I'm a software developer working on the Atlantic coast of Canada. I value simplicity and usability in software, and I like building with full-stack tools. I think modern JavaScript is up there with the bicycle as a benchmark of human ingenuity."
-          key="desc"
+          property="og:description"
+          content={pageDescription}
+          key="ogdesc"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="min-h-screen top-0 px-8 py-7 mx-auto relative max-w-[800px] flex flex-col justify-between">
-        <div>{children}</div>
+        <div>
+          {/* <SiteNav /> */}
+          {children}
+        </div>
         <Footer />
       </main>
     </>

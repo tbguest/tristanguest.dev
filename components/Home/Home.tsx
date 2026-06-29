@@ -85,6 +85,7 @@ const TightContent = () => {
   return (
     <>
       <h2
+        id="writing"
         className={classNames([
           spaceGrotesk.className,
           "mb-4 mt-9 font-semibold text-xl",
