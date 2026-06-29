@@ -64,7 +64,7 @@ export function Home() {
               Tristan Guest
             </h1>
             <p className={"mb-4"}>
-              {`Full-stack developer and data scientist. Building solutions and meaningful connections.`}
+              {`Full-stack developer (TypeScript, React, Node). Contract engineer for startups and SMBs. PhD in oceanography.`}
             </p>
             <Link
               href="/portfolio"
