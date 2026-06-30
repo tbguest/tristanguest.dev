@@ -18,7 +18,8 @@ const content = [
     id: "2",
     href: "/content/gulf-stream",
     title: "Why is there a Gulf Stream?",
-    intro: "Fun with geophysical fluid dynamics (and your GPU)",
+    intro:
+      "Interactive visualization of the North Atlantic gyre and wind-driven circulation models",
   },
   // {
   //   id: "3",
@@ -45,14 +46,28 @@ export function Home() {
     <Layout>
       <div className="flex flex-row items-center gap-8 lg:mt-6 xl:mt-8 2xl:mt-12">
         <div className="flex flex-col">
-          <Image
-            src={profile}
-            alt="A pixel art wizard offering a floating laptop"
-            width={192}
-            height={224}
-            priority={true}
-            unoptimized
-          />
+          <div className="group relative w-fit">
+            <Image
+              src={profile}
+              alt="A pixel art wizard offering a floating laptop"
+              width={192}
+              height={224}
+              priority={true}
+              unoptimized
+            />
+            <span
+              role="tooltip"
+              className={classNames([
+                "pointer-events-none absolute left-1/2 bottom-full z-10 mb-1.5 w-max max-w-[13rem]",
+                "-translate-x-1/2 translate-y-0.5 rounded px-2 py-1",
+                "border border-gray-200 bg-white/90 text-[11px] leading-snug text-gray-500 text-center",
+                "opacity-0 transition-all duration-300 ease-out",
+                "group-hover:translate-y-0 group-hover:opacity-100",
+              ])}
+            >
+              {`Yes, it's a wizard. Yes, I do like fantasy.`}
+            </span>
+          </div>
 
           <section>
             <h1
