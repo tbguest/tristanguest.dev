@@ -69,21 +69,21 @@ const projects: Project[] = [
   },
 ];
 
-const technicalWriting: Project[] = [
-  {
-    title: "Simple Models",
-    description:
-      "Interactive article with live physics simulations. Explores windblown sand ripples and dune cellular automata with WebGL and canvas demos alongside scientific writing.",
-    image: {
-      url: "/assets/content/ripples.gif",
-      alt: "Animation of windblown sand ripples from the Simple Models article",
-    },
-    tags: ["WebGL", "Canvas", "TypeScript", "React", "Scientific Writing"],
-    link: {
-      url: "/content/simple-models",
-    },
-  },
-];
+// const technicalWriting: Project[] = [
+//   {
+//     title: "Simple Models",
+//     description:
+//       "Interactive article with live physics simulations. Explores windblown sand ripples and dune cellular automata with WebGL and canvas demos alongside scientific writing.",
+//     image: {
+//       url: "/assets/content/ripples.gif",
+//       alt: "Animation of windblown sand ripples from the Simple Models article",
+//     },
+//     tags: ["WebGL", "Canvas", "TypeScript", "React", "Scientific Writing"],
+//     link: {
+//       url: "/content/simple-models",
+//     },
+//   },
+// ];
 
 export default function PortfolioPage() {
   return (
@@ -121,7 +121,7 @@ export default function PortfolioPage() {
 
             <p>
               <Link href="/resume" target="_blank" className="text-anchor">
-                Here's my resume.
+                {`Here's my resume.`}
               </Link>
             </p>
           </div>
