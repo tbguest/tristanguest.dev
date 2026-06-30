@@ -1,8 +1,8 @@
 import classNames from "classnames";
+import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 import { spaceGrotesk } from "../../../fonts";
 import { Layout } from "../Layout/Layout";
-import { usePathname } from "next/navigation";
 import { Breadcrumb } from "../../ui/Breadcrumb";
 
 interface Props {
@@ -17,8 +17,8 @@ export function ContentLayout({
   subtitle,
   description,
 }: PropsWithChildren & Props) {
-  const pathname = usePathname();
-  const segments = pathname.split("/").filter(Boolean);
+  const router = useRouter();
+  const segments = router.pathname.split("/").filter(Boolean);
   const lastSegment = segments[segments.length - 1] || "";
 
   const breadcrumbItems = [

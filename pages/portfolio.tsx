@@ -69,6 +69,22 @@ const projects: Project[] = [
   },
 ];
 
+const technicalWriting: Project[] = [
+  {
+    title: "Simple Models",
+    description:
+      "Interactive article with live physics simulations. Explores windblown sand ripples and dune cellular automata with WebGL and canvas demos alongside scientific writing.",
+    image: {
+      url: "/assets/content/ripples.gif",
+      alt: "Animation of windblown sand ripples from the Simple Models article",
+    },
+    tags: ["WebGL", "Canvas", "TypeScript", "React", "Scientific Writing"],
+    link: {
+      url: "/content/simple-models",
+    },
+  },
+];
+
 export default function PortfolioPage() {
   return (
     <ContentLayout
@@ -115,6 +131,67 @@ export default function PortfolioPage() {
               className={classNames([
                 spaceGrotesk.className,
                 "font-black text-2xl mb-1",
+              ])}
+            >
+              Selected highlights
+            </h2>
+            <ul className="flex flex-col gap-1 list-disc list-inside">
+              <li>
+                Y Combinator client (
+                <Link
+                  href="https://biggerpicture.co/"
+                  target="_blank"
+                  className="text-anchor"
+                >
+                  BiggerPicture
+                </Link>
+                )
+              </li>
+              <li>
+                PhD Oceanography (
+                <Link
+                  href="https://www.dal.ca/"
+                  target="_blank"
+                  className="text-anchor"
+                >
+                  Dalhousie
+                </Link>
+                )
+              </li>
+              {/* <li>
+                Conference speaker (
+                <Link
+                  href="https://www.meetup.com/halifax-reactjs-meetup/"
+                  target="_blank"
+                  className="text-anchor"
+                >
+                  HFX.js
+                </Link>
+                ,{" "}
+                <Link
+                  href="https://www.onenorthend.com/the-matrix-code"
+                  target="_blank"
+                  className="text-anchor"
+                >
+                  Matrix Code
+                </Link>
+                )
+              </li> */}
+              <li>
+                Interactive writing (
+                <Link href="/content/simple-models" className="text-anchor">
+                  Simple Models
+                </Link>
+                )
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <h2
+              className={classNames([
+                spaceGrotesk.className,
+                "font-black text-2xl mb-1",
                 "group flex items-center gap-2",
               ])}
             >
@@ -126,6 +203,23 @@ export default function PortfolioPage() {
               ))}
             </div>
           </div>
+
+          {/* <div className="flex flex-col gap-2">
+            <h2
+              className={classNames([
+                spaceGrotesk.className,
+                "font-black text-2xl mb-1",
+                "group flex items-center gap-2",
+              ])}
+            >
+              Technical Writing
+            </h2>
+            <div className="flex flex-col gap-8">
+              {technicalWriting.map((item) => (
+                <ProjectCard data={item} key={item.title} />
+              ))}
+            </div>
+          </div> */}
 
           <div className="flex flex-col gap-2">
             <h2

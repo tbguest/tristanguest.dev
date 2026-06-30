@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { PropsWithChildren } from "react";
 import { Footer } from "../../Footer";
-import { SiteNav } from "../SiteNav";
 
 const SITE_NAME = "Tristan Guest";
 const DEFAULT_DESCRIPTION =
@@ -35,7 +34,6 @@ export const Layout = ({
       </Head>
       <main className="min-h-screen top-0 px-8 py-7 mx-auto relative max-w-[800px] flex flex-col justify-between">
         <div>
-          {/* <SiteNav /> */}
           {children}
         </div>
         <Footer />

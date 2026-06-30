@@ -25,6 +25,7 @@ export const ProjectCard = ({ data }: Props) => {
     data.link.github && isGitHubUrl(data.link.github)
       ? data.link.github
       : undefined;
+  const isInternalLink = data.link.url.startsWith("/");
 
   return (
     <div className="relative rounded-lg flex flex-col md:flex-row shadow-lg overflow-hidden">
@@ -46,18 +47,24 @@ export const ProjectCard = ({ data }: Props) => {
               <TbBrandGithub className={linkIconClassName} />
             </Link>
           )}
-          <Link
-            href={data.link.url}
-            passHref={true}
-            target="_blank"
-            aria-label={`Visit ${data.title}`}
-          >
-            <TbExternalLink className={linkIconClassName} />
-          </Link>
+          {!isInternalLink && (
+            <Link
+              href={data.link.url}
+              passHref={true}
+              target="_blank"
+              aria-label={`Visit ${data.title}`}
+            >
+              <TbExternalLink className={linkIconClassName} />
+            </Link>
+          )}
         </div>
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
-        <Link href={data.link.url} passHref={true} target="_blank">
+        <Link
+          href={data.link.url}
+          passHref={true}
+          {...(isInternalLink ? {} : { target: "_blank" })}
+        >
           <h2
             className={classNames([
               spaceGrotesk.className,
