@@ -4,42 +4,10 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import profile from "../../public/wizard-sprite.png";
 import classNames from "classnames";
 import { spaceGrotesk } from "../../fonts";
-// import { Breadcrumb } from "../Breadcrumb";
 import { Layout } from "../layout/Layout/Layout";
+import { projects, Project } from "../../data/projects";
 
-const content = [
-  {
-    id: "1",
-    href: "/content/simple-models",
-    title: "Simple models of physical systems",
-    intro: "Recreating complex physical phenomena with simple models",
-  },
-  {
-    id: "2",
-    href: "/content/gulf-stream",
-    title: "Why is there a Gulf Stream?",
-    intro:
-      "Interactive visualization of the North Atlantic gyre and wind-driven circulation models",
-  },
-  // {
-  //   id: "3",
-  //   title: "Client-side data fetching",
-  //   intro: "Stale-while-revalidate as a caching strategy",
-  // },
-  // {
-  //   id: "4",
-  //   href: "/content/storytelling",
-  //   title: "On becoming a better storyteller",
-  //   intro:
-  //     "Lessons learned about being a better communicator from a classic introvert",
-  // },
-  // {
-  //   id: "5",
-  //   href: "/content/gists",
-  //   title: "Gists",
-  //   intro: "Code snippets I might want to reuse",
-  // },
-];
+const featured = projects.slice(0, 2);
 
 export function Home() {
   return (
@@ -65,7 +33,7 @@ export function Home() {
                 "group-hover:translate-y-0 group-hover:opacity-100",
               ])}
             >
-              {`Yes, it's a wizard. Yes, I do like fantasy.`}
+              {`It's a wizard. I like fantasy.`}
             </span>
           </div>
 
@@ -78,48 +46,120 @@ export function Home() {
             >
               Tristan Guest
             </h1>
-            <p className={"mb-4"}>
-              {`Full-stack developer (TypeScript, React, Node). Contract engineer for startups and SMBs. PhD in oceanography.`}
+            <p>
+              {`Full-stack developer (TypeScript, React, Node). Contract software engineer for startups and SMBs. PhD in oceanography.`}
             </p>
-            <Link
-              href="/portfolio"
-              className="flex items-center gap-1 text-anchor"
-            >
-              Go to my portfolio <FaArrowRightLong />
-            </Link>
           </section>
         </div>
       </div>
 
-      <TightContent />
+      <SelectedWork />
     </Layout>
   );
 }
 
-const TightContent = () => {
+const SelectedWork = () => {
   return (
     <>
       <h2
-        id="writing"
+        id="work"
         className={classNames([
           spaceGrotesk.className,
           "mb-4 mt-9 font-semibold text-xl",
         ])}
       >
-        Writing & Code
+        Selected work
       </h2>
-      <ul className="flex flex-col gap-4 mb-9">
-        {content.map((item) => {
-          return (
-            <li key={item.id}>
-              <Link href={item.href} className="mb-0 text-anchor">
-                {item.title}
-              </Link>
-              <p className="mt-0.5 text-sm text-gray-500">{item.intro}</p>
-            </li>
-          );
-        })}
+      <ul className="flex flex-col gap-4">
+        {featured.map((project) => (
+          <li key={project.title}>
+            <WorkCard project={project} />
+          </li>
+        ))}
       </ul>
+
+      <Link
+        href="/portfolio"
+        className={classNames([
+          "group mt-4 flex items-center justify-between gap-3 rounded-lg px-5 py-4",
+          "border border-gray-200 bg-gray-50/60",
+          "transition-all hover:border-gray-300 hover:bg-gray-50",
+        ])}
+      >
+        <span className="flex flex-col">
+          <span
+            className={classNames([
+              spaceGrotesk.className,
+              "font-semibold text-base",
+            ])}
+          >
+            See my full portfolio
+          </span>
+          <span className="text-sm text-gray-500">
+            More projects, talks, writing, and background
+          </span>
+        </span>
+        <FaArrowRightLong className="shrink-0 text-anchor transition-transform group-hover:translate-x-1" />
+      </Link>
     </>
+  );
+};
+
+const WorkCard = ({ project }: { project: Project }) => {
+  const isInternal = project.link.url.startsWith("/");
+  return (
+    <Link
+      href={project.link.url}
+      {...(isInternal ? {} : { target: "_blank" })}
+      className={classNames([
+        "group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white sm:flex-row",
+        "transition-all hover:border-gray-300 hover:shadow-md",
+      ])}
+    >
+      <div className="relative aspect-[16/9] w-full shrink-0 sm:aspect-auto sm:w-44 sm:self-stretch">
+        <Image
+          src={project.image.url}
+          alt={project.image.alt}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-1.5 p-4">
+        <div className="flex items-center gap-1.5">
+          <h3
+            className={classNames([
+              spaceGrotesk.className,
+              "font-semibold text-base",
+            ])}
+          >
+            {project.title}
+          </h3>
+          <FaArrowRightLong className="text-gray-400 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+        </div>
+        {project.role && (
+          <p
+            className={classNames([
+              spaceGrotesk.className,
+              "text-[11px] uppercase tracking-wide text-gray-400",
+            ])}
+          >
+            {project.role}
+          </p>
+        )}
+        {project.summary && (
+          <p className="text-sm text-gray-600">{project.summary}</p>
+        )}
+        <span className="mt-0.5 flex flex-wrap gap-x-2 gap-y-0.5">
+          {project.tags.slice(0, 4).map((tag) => (
+            <small
+              key={tag}
+              className={classNames([spaceGrotesk.className, "text-gray-400"])}
+            >
+              {tag}
+            </small>
+          ))}
+        </span>
+      </div>
+    </Link>
   );
 };

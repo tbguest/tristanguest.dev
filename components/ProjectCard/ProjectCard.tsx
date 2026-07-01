@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { TbBrandGithub, TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
-import { Project } from "../../pages/portfolio";
+import { Project } from "../../data/projects";
 import classNames from "classnames";
 import { spaceGrotesk } from "../../fonts";
 

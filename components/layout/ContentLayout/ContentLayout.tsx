@@ -3,12 +3,16 @@ import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 import { spaceGrotesk } from "../../../fonts";
 import { Layout } from "../Layout/Layout";
-import { Breadcrumb } from "../../ui/Breadcrumb";
+import { Breadcrumb, BreadcrumbItem } from "../../ui/Breadcrumb";
+import { WizardHomeLink } from "../../WizardHomeLink/WizardHomeLink";
 
 interface Props {
   title: string;
   subtitle?: string;
   description?: string;
+  portfolioArticle?: boolean;
+  breadcrumbLabel?: string;
+  showWizardHomeLink?: boolean;
 }
 
 export function ContentLayout({
@@ -16,15 +20,24 @@ export function ContentLayout({
   title,
   subtitle,
   description,
+  portfolioArticle,
+  breadcrumbLabel,
+  showWizardHomeLink = true,
 }: PropsWithChildren & Props) {
   const router = useRouter();
   const segments = router.pathname.split("/").filter(Boolean);
   const lastSegment = segments[segments.length - 1] || "";
 
-  const breadcrumbItems = [
-    { label: "~", href: "/" },
-    { label: lastSegment.replace(/-/g, " ") },
-  ];
+  const breadcrumbItems: BreadcrumbItem[] = portfolioArticle
+    ? [
+        { label: "~", href: "/" },
+        { label: "portfolio", href: "/portfolio" },
+        { label: breadcrumbLabel ?? title },
+      ]
+    : [
+        { label: "~", href: "/" },
+        { label: lastSegment.replace(/-/g, " ") },
+      ];
 
   return (
     <Layout
@@ -32,7 +45,18 @@ export function ContentLayout({
       description={description ?? subtitle}
     >
       <section>
-        <Breadcrumb items={breadcrumbItems} />
+        <div
+          className={classNames(
+            "mb-6",
+            showWizardHomeLink && "flex items-center justify-between gap-4",
+          )}
+        >
+          {showWizardHomeLink && <WizardHomeLink />}
+          <Breadcrumb
+            items={breadcrumbItems}
+            className="flex justify-end"
+          />
+        </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <div>

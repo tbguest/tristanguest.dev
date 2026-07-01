@@ -22,16 +22,19 @@ export default function SimpleModels() {
     <ContentLayout
       title="Simple Models"
       description="Interactive article exploring simple models of physical systems — dunes, ripples, and emergent phenomena."
+      portfolioArticle
+      breadcrumbLabel="simple models of physical systems"
     >
       <article className="flex flex-col gap-14">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <p>
-              {`I have a soft spot for simple models that focus on "emergent
-              phenomena" in physical systems rather than trying to capture
-              underlying physics. Some simple models are useful — they can guide
-              scientific inquiry as tests of phenomenological feasibility. Other
-              models just look cool. Here is a collection of both.`}
+              {`I have a soft spot for simple models — the kind that chase
+              "emergent phenomena" in physical systems instead of trying to nail
+              down the underlying physics. Sometimes that's genuinely useful: a
+              simple model can tell you whether a phenomenon is even plausible
+              before anyone bothers with the hard version. And sometimes it just
+              looks cool. Here are some examples.`}
             </p>
           </div>
 

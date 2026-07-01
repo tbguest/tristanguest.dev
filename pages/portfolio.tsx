@@ -1,95 +1,17 @@
 import classNames from "classnames";
 import Link from "next/link";
+import { TbExternalLink } from "react-icons/tb";
 import { ContentLayout } from "../components/layout/ContentLayout";
 import { ProjectCard } from "../components/ProjectCard/ProjectCard";
 import { spaceGrotesk } from "../fonts";
-
-export type Project = {
-  title: string;
-  description: string;
-  image: {
-    url: string;
-    alt: string;
-  };
-  tags: string[];
-  link: {
-    url: string;
-    github?: string;
-  };
-};
-
-const projects: Project[] = [
-  {
-    title: "BiggerPicture",
-    description:
-      "Full-stack contract engineer on YC-backed BiggerPicture, a SaaS platform that optimizes scheduling between shippers, carriers, and consignees. Building across the stack with React, Next.js, TypeScript, and tRPC.",
-    image: {
-      url: "/assets/projects-biggerpicture.png",
-      alt: "Thumbnail view of the BiggerPicture landing page",
-    },
-    tags: [
-      "TypeScript",
-      "React.js",
-      "Node.js",
-      "tRPC",
-      "Prisma",
-      "Planetscale",
-      "MySQL",
-      "LLMs",
-    ],
-    link: {
-      url: "https://biggerpicture.co/",
-    },
-  },
-  {
-    title: "Freewheeling Adventures",
-    description:
-      "Contract engineer modernizing operational software for Freewheeling Adventures, a global adventure travel company with nearly 40 years in business. Migrating a legacy MS Access database to MySQL and rebuilding internal tools with TypeScript and React.",
-    image: {
-      url: "/assets/projects-freewheeling.jpg",
-      alt: "Thumbnail view of a tourism webpage showing a colorful and dynamic landscape",
-    },
-    tags: ["MySQL", "TypeScript", "React.js", "MS Access"],
-    link: {
-      url: "https://www.freewheeling.ca",
-    },
-  },
-  {
-    title: "LunaOcean Data Platform",
-    description:
-      "Full-stack engineer from project inception on LunaOcean, a platform consolidating real-time and forecasted wind, wave, and ocean current data. Worked on the Next.js front end, serverless AWS Lambda backend, and MongoDB data layer — including WebGL particle animations for current visualization.",
-    image: {
-      url: "/assets/projects-luna.png",
-      alt: "Thumbnail view of the LunaOcean ocean weather app, built in part by the author",
-    },
-    tags: ["TypeScript", "Next.js", "MapboxGL JS", "AWS", "MongoDB", "Python"],
-    link: {
-      url: "https://lunaocean.app/",
-    },
-  },
-];
-
-// const technicalWriting: Project[] = [
-//   {
-//     title: "Simple Models",
-//     description:
-//       "Interactive article with live physics simulations. Explores windblown sand ripples and dune cellular automata with WebGL and canvas demos alongside scientific writing.",
-//     image: {
-//       url: "/assets/content/ripples.gif",
-//       alt: "Animation of windblown sand ripples from the Simple Models article",
-//     },
-//     tags: ["WebGL", "Canvas", "TypeScript", "React", "Scientific Writing"],
-//     link: {
-//       url: "/content/simple-models",
-//     },
-//   },
-// ];
+import { projects, writing } from "../data/projects";
 
 export default function PortfolioPage() {
   return (
     <ContentLayout
       title="Portfolio"
       description="Projects, conference talks, and background — full-stack developer working with YC-backed startup and ocean data platforms."
+      showWizardHomeLink
     >
       <div>
         <section className="flex flex-col gap-8">
@@ -119,73 +41,30 @@ export default function PortfolioPage() {
               {`, my contracting and consulting company.`}
             </p>
 
-            <p>
-              <Link href="/resume" target="_blank" className="text-anchor">
-                {`Here's my resume.`}
-              </Link>
-            </p>
           </div>
-
-          <div className="flex flex-col gap-2">
+            
+            <div className="flex flex-col gap-2">
             <h2
               className={classNames([
                 spaceGrotesk.className,
                 "font-black text-2xl mb-1",
+                "group flex items-center gap-2",
               ])}
             >
-              Selected highlights
+              Resume
             </h2>
-            <ul className="flex flex-col gap-1 list-disc list-inside">
-              <li>
-                Y Combinator client (
-                <Link
-                  href="https://biggerpicture.co/"
-                  target="_blank"
-                  className="text-anchor"
-                >
-                  BiggerPicture
-                </Link>
-                )
-              </li>
-              <li>
-                PhD Oceanography (
-                <Link
-                  href="https://www.dal.ca/"
-                  target="_blank"
-                  className="text-anchor"
-                >
-                  Dalhousie
-                </Link>
-                )
-              </li>
-              {/* <li>
-                Conference speaker (
-                <Link
-                  href="https://www.meetup.com/halifax-reactjs-meetup/"
-                  target="_blank"
-                  className="text-anchor"
-                >
-                  HFX.js
-                </Link>
-                ,{" "}
-                <Link
-                  href="https://www.onenorthend.com/the-matrix-code"
-                  target="_blank"
-                  className="text-anchor"
-                >
-                  Matrix Code
-                </Link>
-                )
-              </li> */}
-              <li>
-                Interactive writing (
-                <Link href="/content/simple-models" className="text-anchor">
-                  Simple Models
-                </Link>
-                )
-              </li>
-            </ul>
-          </div>
+            <p>
+              <Link
+                href="/resume"
+                target="_blank"
+                className="text-anchor inline-flex items-center gap-1"
+              >
+                {`Here's my resume`}
+                <TbExternalLink className="w-4 h-4 shrink-0" aria-hidden />
+              </Link>
+            </p>
+            </div>
+
 
           <div className="flex flex-col gap-2">
             <h2
@@ -195,7 +74,7 @@ export default function PortfolioPage() {
                 "group flex items-center gap-2",
               ])}
             >
-              Recent Clients & Projects
+              Recent Clients
             </h2>
             <div className="flex flex-col gap-8">
               {projects.map((item) => (
@@ -204,7 +83,7 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          {/* <div className="flex flex-col gap-2">
+          <div id="writing" className="flex flex-col gap-2 scroll-mt-8">
             <h2
               className={classNames([
                 spaceGrotesk.className,
@@ -212,14 +91,18 @@ export default function PortfolioPage() {
                 "group flex items-center gap-2",
               ])}
             >
-              Technical Writing
+              Writing
             </h2>
+            <p className="mb-2 text-gray-500">
+              {`Interactive explainers where I dig into a physical system and build
+              the simulation to go with it.`}
+            </p>
             <div className="flex flex-col gap-8">
-              {technicalWriting.map((item) => (
+              {writing.map((item) => (
                 <ProjectCard data={item} key={item.title} />
               ))}
             </div>
-          </div> */}
+          </div>
 
           <div className="flex flex-col gap-2">
             <h2

@@ -14,6 +14,8 @@ export default function GulfStream() {
     <ContentLayout
       title="Why is there a Gulf Stream?"
       subtitle="Fun with geophysical fluid dynamics (and your GPU)"
+      portfolioArticle
+      breadcrumbLabel="why is there a gulf stream?"
     >
       <article className="flex flex-col gap-8">
         <div className="flex relative items-center justify-center px-5 md:px-20 py-5">

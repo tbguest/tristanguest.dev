@@ -4,7 +4,7 @@ import { Fragment } from "react";
 const NAV_ITEMS = [
   { label: "~", href: "/" },
   { label: "portfolio", href: "/portfolio" },
-  { label: "writing", href: "/#writing" },
+  { label: "writing", href: "/portfolio#writing" },
   { label: "resume", href: "/resume" },
 ] as const;
 

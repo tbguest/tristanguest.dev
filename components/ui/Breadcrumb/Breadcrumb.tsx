@@ -8,11 +8,15 @@ export interface BreadcrumbItem {
 
 interface Props {
   items: BreadcrumbItem[];
+  className?: string;
 }
 
-export function Breadcrumb({ items }: Props) {
+export function Breadcrumb({ items, className }: Props) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-4 flex justify-end">
+    <nav
+      aria-label="Breadcrumb"
+      className={className ?? "mb-4 flex justify-end"}
+    >
       <ol className="flex items-center gap-2 text-sm text-gray-500">
         {items.map((item, index) => (
           <Fragment key={item.label}>
